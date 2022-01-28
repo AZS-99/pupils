@@ -70,10 +70,31 @@ Write a program that reads an integer and displays all its smallest factors, als
 if the input integer is 120, the output should be as follows:
 2, 2, 2, 3, 5
 """
-def smallest_factors(num):
 
+def is_prime(num):
+    for x in range(2, num):
+        if num % x == 0:
+            return False
+    return True
 
+def primes(num):
+    prime = []
+    for x in range(2, num):
+        if is_prime(x):
+            prime.append(x)
+    return prime
 
+def factors(num):
+    factor_lst = []
+    lst = primes(num)
+    index = 0
+    while num != 1:
+        prime = lst[index]
+        while num % prime == 0:
+            num //= prime
+            factor_lst.append(prime)
+        index += 1
+    return factor_lst
 
 """
 Write a program to sum the following series:

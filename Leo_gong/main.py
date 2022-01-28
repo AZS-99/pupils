@@ -1,5 +1,5 @@
-from loops import i
+from loops import factors
 
 if __name__ == '__main__':
 
-   print(i())
+   print(factors(10))
