@@ -140,3 +140,63 @@ def i():
     for x in range(1, 10000):
         z += Fraction(1, factorial(x))
     return z
+
+
+"""
+Write a program that computes the following summation:
+1 / (√1 + √2) + 1 / (√2 + √3) + 1 / (√3 + √4) + .... + 1 / (√624 + √625)
+"""
+def root():
+    s = 0
+    for x in range(1, 625):
+        s += 1 / (math.sqrt(x) + math.sqrt(x + 1))
+    return round(s, 2)
+
+
+"""
+Write a program that reads integers, finds the largest of them, and counts its occurrences. Assume that the input ends 
+with number 0. Suppose that you entered 3 5 2 5 5 5 0; the program finds that the largest number is 5 and the 
+occurrence count for 5 is 4. (Hint: Maintain two vari- ables, max and count. The variable max stores the current maximum 
+number, and count stores its occurrences. Initially, assign the first number to max and 1 to count. Compare each 
+subsequent number with max. If the number is greater than max, assign it to max and reset count to 1. If the number is 
+equal to max, incre- ment count by 1.)
+
+Enter a number (0: for end of input): 3
+Enter a number (0: for end of input): 5
+Enter a number (0: for end of input): 2
+Enter a number (0: for end of input): 5
+Enter a number (0: for end of input): 5
+Enter a number (0: for end of input): 5
+Enter a number (0: for end of input): 0
+The largest number is 5
+The occurrence count of the largest number is 4
+"""
+def largest_number():
+    x = None
+    lst = []
+    while x != 0:
+        x = int(input("Enter a number (0: for end of input): "))
+        lst.append(x)
+    largest = max(lst)
+    occurrences = lst.count(largest)
+    return largest, occurrences
+
+
+
+"""
+Write a program that displays all possible combinations for picking two numbers from integers 1 to 7. Also display the 
+total number of combinations.
+
+Sample Output:
+1 2
+1 3
+...
+...
+6 7
+The total number of all combinations is 21
+"""
+def combinations(x):
+    total_number = 0
+    for s in range(x):
+        total_number += (x - 1)
+    return total_number / 2
