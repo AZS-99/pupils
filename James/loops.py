@@ -92,15 +92,53 @@ Write a program that reads an integer and displays all its smallest factors, als
 if the input integer is 120, the output should be as follows:
 2, 2, 2, 3, 5
 """
-def primefactoring(num):
-    factor = 1
 
-def prime(input):
-    isPrime = True
+def is_prime(input):
     argsqrt = math.sqrt(input)
     currentfactor = math.floor(argsqrt)
     while currentfactor > 1:
         if input % currentfactor == 0:
-            isPrime = False
-        argsqrt -= 1
-    return isPrime
+            return False
+        currentfactor -= 1
+    return True
+
+def prime(max_factors):
+    primes = []
+    currentprime = 2
+    while currentprime < max_factors:
+        if is_prime(currentprime) == True:
+            primes.append(currentprime)
+        currentprime += 1
+    return primes
+
+def factors(num):
+    primelist = prime(num)
+    index = 0
+    factorlist = []
+    quotient = num
+    while index < len(primelist):
+        while quotient % primelist[index] == 0:
+            factorlist.append(primelist[index])
+            quotient //= primelist[index]
+        index += 1
+    return factorlist
+
+
+"""
+Write a program to sum the following series and find the EXACT value:
+1/3  +  3/5  +  5/7  +  7/9  +  9/11  + .... +  95/97  +  97/99
+"""
+class Fraction:
+    def __init__(self, numerator, denominator):
+        gcf = math.gcd(numerator, denominator)
+        self.numerator = numerator
+        self.denominator = denominator
+
+    def __str__(self):
+        return "{0}/{1}".format(self.numerator, self.denominator)
+
+    def __add__(self, other):
+        new_denominator =  math.lcm(self.denominator, other.denominator)
+        new_numerator = self.numerator / math.lcm(self.denominator, other.denominator)
+        return Fraction(new_numerator, new_denominator)
+

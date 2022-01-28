@@ -6,7 +6,7 @@ from Student import Student
 from Course import Course
 from School import School
 if __name__ == '__main__':
-    loops.fracsum()
+    print(loops.factors(120))
 
 
 
