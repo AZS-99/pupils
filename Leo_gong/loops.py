@@ -1,3 +1,4 @@
+import math
 """
 Write a program that displays the following table (note that 1 kilogram is 2.2 pounds):
 Kilograms   Pounds
@@ -69,26 +70,8 @@ Write a program that reads an integer and displays all its smallest factors, als
 if the input integer is 120, the output should be as follows:
 2, 2, 2, 3, 5
 """
-def is_prime(num):
-    for x in range(2, num):
-        if num % x == 0:
-            return False
-    return True
+def smallest_factors(num):
 
-def all_primes(num):
-    primes = []
-    for x in range(2, num):
-        if is_prime(x):
-            primes.append(x)
-    return primes
-
-def factors(num):
-    primes = all_primes(num)
-    all_factors = []
-    for prime in primes:
-        if num % prime == 0:
-            all_factors.append(prime)
-    return all_factors
 
 
 
@@ -96,5 +79,43 @@ def factors(num):
 Write a program to sum the following series:
 1/3  +  3/5  +  5/7  +  7/9  +  9/11  + .... +  95/97  +  97/99
 """
-def aaaa():
-    for x in range(1, 97, 2):
+class Fraction:
+    def __init__(self, numerator, denominator):
+        gcd = math.gcd(numerator, denominator)
+        self.numerator = numerator // gcd
+        self.denominator = denominator // gcd
+
+    def __str__(self):
+        return str(self.numerator) + "/" + str(self.denominator)
+
+    def __add__(self, other):
+        lcm = math.lcm(self.denominator, other.denominator)
+        numerator1 = self.numerator * (lcm // self.denominator)
+        numerator2 = other.numerator * (lcm // other.denominator)
+        new_numerator = numerator1 + numerator2
+        return Fraction(new_numerator, lcm)
+
+def add_fraction():
+    z = Fraction(0, 1)
+    for x in range(1, 98, 2):
+        z += Fraction(x, (x + 2))
+    return z
+
+
+"""
+You can approximate e by using the following series
+e = 1 + 1/1! + 1/2! + 1/3! + ... + 1/i!
+Write a program that displays the e value for i = 10000, 20000, . . ., and 100000.
+"""
+def factorial(x):
+    total = 1
+    for i in range(1, x):
+        total *= i
+    return total
+
+
+def i():
+    z = Fraction(1, 1)
+    for x in range(1, 10000):
+        z += Fraction(1, factorial(x))
+    return z

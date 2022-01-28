@@ -7,6 +7,8 @@ Write a program to display the population for the next five years. Assume the cu
 and one year has 365 days. Hint: in Python, you can use integer division operator // to perform division. The result is
 an integer. For example, 5 // 4 is 1 (not 1.25) and 10 // 4 is 2 (not 2.5).
 """
+import math
+
 
 def arithimetic(population):
     seconds_per_year = 365 * 24 * 60 * 60
@@ -156,3 +158,19 @@ Sample Run:
 Enter three points for a triangle: 1.5, -3.4, 4.6, 5, 9.5, -3.4
 The area of the triangle is 33.6
 """
+def find_sides(x1, y1, x2, y2, x3, y3):
+    height1 = y1-y2
+    base1 = x1-x2
+    side1 = math.sqrt(height1 ** 2 + base1 ** 2)
+
+    height2 = y2-y3
+    base2 = x2-x3
+    side2 = math.sqrt(height2 ** 2 + base2 ** 2)
+
+    height3 = y1-y3
+    base3 = x1 - x3
+    side3 = math.sqrt(height3 ** 2 + base3 ** 2)
+
+    s = (side1 + side2 + side3)/2
+    area = math.sqrt(s*(s - side1)*(s - side2)*(s - side3))
+    return round(area, 1)
