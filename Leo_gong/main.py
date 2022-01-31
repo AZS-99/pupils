@@ -1,4 +1,4 @@
-from loops import combinations
+from advanced_fns import reverse
 
 if __name__ == '__main__':
-   print(combinations(7))
+   print(reverse(234))

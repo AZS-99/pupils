@@ -192,11 +192,12 @@ Sample Output:
 1 3
 ...
 ...
+5 6
+5 7
 6 7
 The total number of all combinations is 21
 """
-def combinations(x):
-    total_number = 0
-    for s in range(x):
-        total_number += (x - 1)
-    return total_number / 2
+def combinations():
+    for i in range(1, 7):
+        for j in range(i + 1, 8):
+            print(i, j)
