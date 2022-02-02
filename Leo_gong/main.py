@@ -1,4 +1,4 @@
-from advanced_fns import reverse
+from advanced_fns import celsiusToFahrenheit
 
 if __name__ == '__main__':
-   print(reverse(234))
+   celsiusToFahrenheit(40)

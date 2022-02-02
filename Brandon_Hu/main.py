@@ -1,9 +1,12 @@
-import math
-from advanced_loops import loop4
-from manipulating_input import warming_water
-from manipulating_input import root
 
+from manipulating_input import months
 if __name__ == '__main__':
+    month, year = input("Enter month and year:").split(", ")
+    month = int(month)
+    year = int(year)
+
+    print(months(month, year))
 
 
-    print(loop4())
+
+

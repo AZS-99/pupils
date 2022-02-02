@@ -184,11 +184,10 @@ Enter 0 to convert dollars to RMB and 1 vice versa: 1
 Enter the RMB amount: 10000
 10000.0 yuan is $1468.43
 """
-def dollars(rate, dollar, us_cn):
-    if us_cn == 0:
-        money = dollar * rate
-    elif us_cn == 1:
-        money = dollar / rate
-    return money
+def currency_exchange(rate, money, conversion_num):
+    if conversion_num == 0:
+        return money * rate
+    else:
+        return round(money / rate, 2)
 
 

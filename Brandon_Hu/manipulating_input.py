@@ -166,4 +166,46 @@ def root(a, b, c):
         return float("inf"), float('inf')
 
 
+"""
+(Financials: currency exchange) Write a program that prompts the user to enter the currency exchange rate between U.S. 
+dollars and Chinese Renminbi (RMB). Prompt the user to enter 0 to convert from U.S. dollars to Chinese RMB and 1 for 
+vice versa. Prompt the user to enter the amount in U.S. dollars or Chinese RMB to convert it to Chinese RMB or U.S. 
+dollars, respectively. Here are some sample runs:
+
+Enter the exchange rate from dollars to RMB: 6.81
+Enter 0 to convert dollars to RMB and 1 vice versa: 0
+Enter the dollar amount: 100
+$100.0 is 681.0 yuan
+
+Enter the exchange rate from dollars to RMB: 6.81
+Enter 0 to convert dollars to RMB and 1 vice versa: 1
+Enter the RMB amount: 10000
+10000.0 yuan is $1468.43
+"""
+def currency_exchange(rate, money, conversion_num):
+    if conversion_num == 0:
+        return money * rate
+    else:
+        return round(money / rate, 2)
+
+
+
+"""
+Write a program that prompts the user to enter the month and year and displays the number of days in the month. For 
+example, if the user entered month 2 and year 2000, the program should display that February 2000 has 29 days. If the 
+user entered month 3 and year 2005, the program should display that March 2005 has 31 days.
+"""
+def months(month, years):
+    lst_31 = [1, 3, 5, 7, 8, 10, 12]
+    lst_30 = [4, 6, 9, 11]
+    if month in lst_31:
+        return 31
+    elif month in lst_30:
+        return 30
+    else:
+        if years % 4 == 0:
+            return 29
+        else:
+            return 28
+
 
