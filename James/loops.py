@@ -130,15 +130,114 @@ Write a program to sum the following series and find the EXACT value:
 """
 class Fraction:
     def __init__(self, numerator, denominator):
-        gcf = math.gcd(numerator, denominator)
-        self.numerator = numerator
-        self.denominator = denominator
+        gcd = math.gcd(numerator, denominator)
+        self.numerator = numerator // gcd
+        self.denominator = denominator // gcd
 
     def __str__(self):
         return "{0}/{1}".format(self.numerator, self.denominator)
 
     def __add__(self, other):
-        new_denominator =  math.lcm(self.denominator, other.denominator)
-        new_numerator = self.numerator / math.lcm(self.denominator, other.denominator)
+        new_denominator = math.lcm(self.denominator, other.denominator)
+        numerator1 = self.numerator * (new_denominator // self.denominator)
+        numerator2 = other.numerator * (new_denominator // other.denominator)
+        new_numerator = numerator1 + numerator2
         return Fraction(new_numerator, new_denominator)
+
+    def __iadd__(self, other):
+        return self + other
+
+
+"""
+You can approximate e by using the following series
+e = 1 + 1/1! + 1/2! + 1/3! + ... + 1/i!
+Write a program that displays the e value for i = 10000, 20000, . . ., and 100000.
+"""
+def factorial(fac):
+    if fac < 2:
+        return fac
+    else:
+        return factorial(fac - 1) * fac
+
+
+def facfrac(i):
+    total = Fraction(1, 1)
+    for k in range(1, i):
+
+        frac1 = Fraction(1, factorial(k))
+        total += frac1
+    return total
+
+
+
+"""
+Write a program that computes the following summation:
+1 / (√1 + √2) + 1 / (√2 + √3) + 1 / (√3 + √4) + .... + 1 / (√624 + √625)
+"""
+def sqrts():
+    total = 0
+    for i in range(1, 624, 1):
+        total += 1 / (math.sqrt(i) + math.sqrt(i + 1))
+    return total
+
+
+"""
+Write a program that reads integers, finds the largest of them, and counts its occurrences. Assume that the input ends 
+with number 0. Suppose that you entered 3 5 2 5 5 5 0; the program finds that the largest number is 5 and the 
+occurrence count for 5 is 4. (Hint: Maintain two vari- ables, max and count. The variable max stores the current maximum 
+number, and count stores its occurrences. Initially, assign the first number to max and 1 to count. Compare each 
+subsequent number with max. If the number is greater than max, assign it to max and reset count to 1. If the number is 
+equal to max, increment count by 1.)
+Enter a number (0: for end of input): 3
+Enter a number (0: for end of input): 5
+Enter a number (0: for end of input): 2
+Enter a number (0: for end of input): 5
+Enter a number (0: for end of input): 5
+Enter a number (0: for end of input): 5
+Enter a number (0: for end of input): 0
+The largest number is 5
+The occurrence count of the largest number is 4
+"""
+def maxcount():
+    max = 0
+    count = 0
+    zeroentered = False
+    while zeroentered == False:
+        currentnumber = int(input("Enter a number (0: for end of input):"))
+        if currentnumber == 0:
+            zeroentered = True
+        elif currentnumber == max:
+            count += 1
+        elif currentnumber > max:
+            count = 1
+            max = currentnumber
+
+    return count,max
+
+
+"""
+Write a program that displays all possible combinations for picking two numbers from integers 1 to 7. Also display the 
+total number of combinations.
+Sample Output:
+1 2
+1 3
+1 4
+1 5
+1 6
+1 7
+2 3
+...
+...
+5 6
+5 7
+6 7
+The total number of all combinations is 21
+"""
+def combos():
+    for i in range(1, 7):
+        for j in range(i + 1, 8):
+            print(i, j)
+
+
+
 

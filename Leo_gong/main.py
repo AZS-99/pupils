@@ -1,4 +1,4 @@
-from advanced_fns import celsiusToFahrenheit
+from advanced_fns import all_primes
 
 if __name__ == '__main__':
-   celsiusToFahrenheit(40)
+   print(all_primes())

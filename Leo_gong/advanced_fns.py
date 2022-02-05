@@ -141,3 +141,78 @@ This function prints the characters between ch1 and ch2 with the specified numbe
 prints ten characters per line from 1 to Z.
 """
 def printChars(ch1, ch2, numberPerLine):
+    count = 0
+    for x in range(ord(ch1) + 1, ord(ch2)):
+        print(chr(x), end="\n" if count == numberPerLine else " ")
+        count += 1
+        count %= 5
+
+
+"""
+(Conversions between feet and meters) Write a module that contains the following two functions:
+# Converts from feet to meters
+def footToMeter(foot):
+# Converts from meters to feet
+def meterToFoot(meter):
+The formulas for the conversion are:
+                                foot = meter / 0.305    
+                                meter = 0.305 * foot
+Write a test program that invokes these functions to display the following tables:
+Feet       Meters  | Meters     Feet
+1.0        0.305   | 20.0       66.574
+2.0        0.610   | 26.0       81.967
+...
+9.0        2.745   | 68         222.951
+10.0       3.050   | 74         242.623
+"""
+def footToMeter(foot):
+    meters = 0.305 * foot
+    return meters
+
+def meterToFoot(meters):
+    feet = meters / 0.305
+    return feet
+
+def foot_and_meters_table():
+    print("{:<10} {:<10} | {:>10} {:>10}".format("Feet", "Meters", "Meters", "Feet"))
+    for x in range(10):
+        feet = x + 1
+        meters = footToMeter(feet)
+        meters2 = 20 + x * 6
+        feet2 = round(meterToFoot(meters2), 3)
+        print("{:<10} {:<10} | {:>10} {:>10}".format(feet, meters, meters2, feet2))
+
+
+"""
+Provide the isPrime(number) function for testing whether a number is prime. Use this function to find the number of 
+prime numbers less than 10,000.
+"""
+def isPrime(number):
+    for x in range(2, number):
+        if number % x == 0:
+            return False
+    return True
+
+def all_primes():
+    count = 0
+    for i in range(2, 10000):
+        if isPrime(i) == True:
+            count += 1
+    return count
+
+
+"""
+(Sum series) Write a function to compute the following series: 
+                    m(i)= 1/2 + 2/3 +  .... + i /(i + 1)
+Write a test program that displays the following table:
+i               m(i)
+1               0.5000
+2               1.1667
+... 
+19              16.4023
+20              17.3546
+"""
+def sum_series(i):
+    m = 0
+    for x in range(1, i):
+        m = x / x+1
