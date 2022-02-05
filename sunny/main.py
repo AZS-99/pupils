@@ -17,13 +17,7 @@ if __name__ == "__main__":
    # print("{:<10} {:<10}".format("Sunny", "Chen"))
    # print("{:<10} {:<10}".format("Coding", "Python"))
 
-   loops.times_table()
-
-   """
-   5 x 1 = 5
-   5 x 2 = 10
-   5 x 3 = 15
-   """
+   loops.sum_numbers(10)
 
 
 
