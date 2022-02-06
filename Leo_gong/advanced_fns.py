@@ -212,7 +212,68 @@ i               m(i)
 19              16.4023
 20              17.3546
 """
-def sum_series(i):
+def m(i):
     m = 0
-    for x in range(1, i):
-        m = x / x+1
+    for x in range(1, i + 1):
+        m += x / (x + 1)
+    return round(m, 4)
+
+def table_sum_series():
+    print("{:<10} {:<10}".format("i", "m(i)"))
+    for i in range(1, 21):
+        print("{:<10} {:<10}".format(i, m(i)))
+
+
+"""
+(Estimate π) π can be computed using the following series:
+m(i) = 4(1 - 1/3 + 1/5 - 1/7 + 1/9 - 1/11 + .... + (-1)^(i+1)/(2i - 1)) 
+
+Write a function that returns m(i) for a given i and write a test program that displays the following table:
+
+ i                   m(i)
+ 1                   4.0000
+ 101                 3.1515
+ 201                 3.1466
+ 301                 3.1449
+ 401                 3.1441
+ 501                 3.1436
+ 601                 3.1433
+ 701                 3.1430
+ 801                 3.1428
+ 901                 3.1427
+"""
+def m2(i):
+    m = 0
+    positive = True
+    for x in range(1, i + 1, 2):
+        # print("+" if positive else "-", 1, '/', x)
+        if positive:
+            m += 1 / x
+        else:
+            m -= 1 / x
+        positive = not positive
+    return round((m * 4), 4)
+
+def table_m2():
+    print("{:<10} {:<10}".format("i", "m(i)"))
+    for x in range(1, 902, 100):
+        print("{:<10} {:<10}".format(x, m2(x)))
+
+
+"""
+(Financial application: print a tax table) gives a program to compute tax. Write a function 
+for computing tax using the following header:
+def computeTax(status, taxableIncome):
+Use this function to write a program that prints a tax table for taxable income from $50,000 to $60,000 with intervals 
+of $50 for all four statuses, as follows:
+
+Taxable Income          Single      Married Joint        Married Separated           Head of House
+     
+50000                   8688        6665                 8688                        7352
+50050                   8700        6673                 8700                        7365
+...
+59950                   11175       8158                 11175                       9840
+60000                   11188       8165                 11188                       9852
+
+"""
+def computeTax(status, taxableIncome):
