@@ -5,6 +5,9 @@ def getPentagonalNumber(n):
 Write a test program that uses this function to display the first 100 pentagonal
 numbers with 10 numbers on each line.
 """
+import math
+
+
 def pentagonal_number(n):
     return n * (3 * n - 1) // 2
 
@@ -42,7 +45,7 @@ Write a test program that prompts the user to enter an integer and reports wheth
 
 
 """
-def reverse(number):
+def reverse_1(number):
     answer = 0
     while number != 0:
         answer = answer * 10 + number % 10
@@ -50,7 +53,7 @@ def reverse(number):
     return answer
 
 def isPalindrome(number):
-    if number == reverse(number):
+    if number == reverse_1(number):
         print("It is palindrome")
     else:
         print("It is not palindrome")
@@ -277,3 +280,170 @@ Taxable Income          Single      Married Joint        Married Separated      
 
 """
 def computeTax(status, taxableIncome):
+    pass
+
+
+"""
+(Math: approximate the square root) There are several techniques for implementing the sqrt function in the math module. 
+One such technique is known as the Babylonian function. It approximates the square root of a number, n, by repeatedly 
+performing a calculation using the following formula:
+                            nextGuess = (lastGuess + (n / lastGuess)) / 2
+When nextGuess and lastGuess are almost identical, nextGuess is the approximated square root. The initial guess can be 
+any positive value (e.g., 1). This value will be the starting value for lastGuess. If the difference between nextGuess 
+and lastGuess is less than a very small number, such as 0.0001, you can claim that nextGuess is the approximated square 
+root of n. If not, nextGuess becomes lastGuess and the approximation process continues. Implement the following function 
+that returns the square root of n.
+def sqrt(n):
+"""
+def sqrt(n):
+    difference = float("inf")
+    guess = 0.5 * n
+    while difference > 0.0001:
+        nextGuess = (guess + (n / guess)) / 2
+        difference = abs(nextGuess - guess)
+        guess = nextGuess
+    return nextGuess
+
+
+
+"""
+(Convert milliseconds to hours, minutes, and seconds) Write a function that converts milliseconds to hours, minutes, 
+and seconds using the following header:
+def convertMillis(millis):
+
+The function returns a string as hours:minutes:seconds. For example, convertMillis(5500) returns the string 0:0:5, 
+convertMillis(100000) returns the string 0:1:40, and convertMillis(555550000) returns the string 154:19:10.
+Write a test program that prompts the user to enter a value for milliseconds and displays a string in the format of 
+hours:minutes:seconds.
+"""
+def convertMillis(millis):
+    total_seconds = millis / 1000
+    mins = total_seconds // 60
+    seconds = total_seconds % 60
+    hours = mins // 60
+    mins = mins % 60
+    return hours, mins, seconds
+
+
+"""
+A palindromic prime is a prime number that is also palindromic. For example, 131 is a prime and also a palindromic 
+prime, as are 313 and 757. Write a program that displays the first 100 palindromic prime numbers. Display 10 numbers 
+per line and align the numbers properly, as follows:
+
+ 2     3     5     7    11    101    131   151   181   191
+313   353   373   383   727   757    787   797   919   929
+"""
+def is_prime(num):
+    for x in range(2, num):
+        if num % x == 0:
+            return False
+    return True
+
+def is_palindrome(num):
+    string = str(num)
+    lst1 = [ch for ch in string]
+    lst2 = lst1[:]
+    lst1.reverse()
+    if lst2 == lst1:
+        return True
+    else:
+        return False
+
+
+def primes(num):
+    primes= []
+    for x in range(2, num):
+        if is_prime(x) and is_palindrome(x):
+            primes.append(x)
+    return primes
+
+
+"""
+An emirp ( prime spelled backward) is a non-palindromic prime number whose reversal is also a prime. For example, both 
+17 and 71 are prime numbers, so 17 and 71 are emirps. Write a program that displays the first 100 emirps. Display 10 
+numbers per line and align the numbers properly, as follows:
+
+ 13   17   31   37   71   73   79   97  107  113
+149  157  167  179  199  311  337  347  359  389
+"""
+
+def reverse_2(num):
+    string = str(num)
+    lst = [ch for ch in string]
+    lst.reverse()
+    string2 = "".join(lst)
+    num2 = int(string2)
+    return num2
+
+
+def primes2(num):
+    primes_nums = []
+    for x in range(2, num):
+        if is_prime(x) and not is_palindrome(x) and is_prime(reverse_2(x)):
+            primes_nums.append(x)
+    return primes_nums
+
+
+
+"""
+(Mersenne prime) A prime number is called a Mersenne prime if it can be written in the form 2p - 1 for some positive 
+integer p. Write a program that finds all Mersenne primes with p ... 31 and displays the output as follows:
+
+p               2^p - 1 
+2               3
+3               7
+5               31
+.
+.
+.
+31
+"""
+def mersenne_prime():
+    print("{:<10} {:>10}".format("p", "2^p - 1"))
+    for p in range(2, 32):
+        if is_prime(2 ** p - 1):
+            print("{:<10} {:>10}".format(p, (2 ** p - 1)))
+
+
+"""
+(Twin primes) Twin primes are a pair of prime numbers that differ by 2. For example, 3 and 5, 5 and 7, and 11 and 13 
+are twin primes. Write a program to find all twin primes less than 1,000. Display the output as follows:
+ (3, 5)
+ (5, 7)
+ ...
+"""
+def twin_primes():
+    for x in range(3, 999):
+        if is_prime(x) and is_prime(x + 2):
+            print("(" + str(x) + ", " + str(x + 2) + ")")
+
+
+"""
+(Game: craps) Craps is a popular dice game played in casinos. Write a program to play a variation of the game, as 
+follows:
+Roll two dice. Each die has six faces representing values 1, 2, ..., and 6, respectively. Check the sum of the two 
+dice. If the sum is 2, 3, or 12 (called craps), you lose; if the sum is 7 or 11 (called natural), you win; if the sum 
+is another value (i.e., 4, 5, 6, 8, 9, or 10), a point is established. Continue to roll the dice until either a 7 or the 
+same point value is rolled. If 7 is rolled, you lose. Otherwise, you win.
+Your program acts as a single player. Here are some sample runs:
+
+Sample Run 1:
+You rolled 5 + 6 = 11
+You win
+
+Sample Run 2: 
+You rolled 1 + 2 = 3
+You lose
+
+Sample Run 3:
+You rolled 4 + 4 = 8
+point is 8
+You rolled 6 + 2 = 8
+You win
+
+Sample Run 4:
+You rolled 3 + 2 = 5
+point is 5
+You rolled 2 + 5 = 7
+You lose
+"""

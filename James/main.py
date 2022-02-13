@@ -1,20 +1,13 @@
-import james_random
-import recursion
-import revision
+
 import loops
-from Student import Student
-from Course import Course
-from School import School
+import advanced_fns
+
 if __name__ == '__main__':
-    loops.combos()
-    # frac1 = loops.Fraction(1, 3)
-    # frac2 = loops.Fraction(3, 5)
-    # for x in range(1, 47):
-    #     frac1 += frac2
-    #     frac2 = loops.Fraction(frac1.numerator + 2, frac1.denominator + 2)
-    #     print(frac1)
-    #
-    # print(frac1)
+    arg = [int(x) for x in input("Enter 2 numbers, the investment, and the interest rate: ").split(", ")]
+    advanced_fns.printInvestment(arg[0],(arg[1]/12)/100)
+    #order = advanced_fns.displaySortedNumbers(arg[0], arg[1], arg[2])
+
+    # advanced_fns.displaySortedNumbers(int(input("Enter 3 numbers:"))))
 
 
 

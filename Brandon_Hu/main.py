@@ -1,7 +1,6 @@
-
-from loops import kilo_miles
+from loops import smallest
 if __name__ == '__main__':
-    kilo_miles()
+    print(smallest())
 
 
 

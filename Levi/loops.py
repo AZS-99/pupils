@@ -92,3 +92,66 @@ def n_squared():
     while n**2 < 12000:
         n += 1
     return n
+
+
+"""
+Write a program that reads an integer and displays all its smallest factors, also known as prime factors. For example, 
+if the input integer is 120, the output should be as follows:
+2, 2, 2, 3, 5
+"""
+
+def is_prime(num):
+    for i in range(2, num):
+        if num % i == 0:
+            return False
+    return True
+
+def find_primes(num):
+    prime_numbers = []
+    for i in range(2, num):
+        if is_prime(i) == True:
+            prime_numbers.append(i)
+    return prime_numbers
+
+
+def prime_factors(integer):
+    primes = find_primes(integer)
+    factors = []
+    for prime in primes:
+        while integer % prime == 0:
+            integer //= prime
+            factors.append(prime)
+    return factors
+
+
+"""
+Write a program that reads integers, finds the largest of them, and counts its occurrences. Assume that the input ends 
+with number 0. Suppose that you entered 3 5 2 5 5 5 0; the program finds that the largest number is 5 and the 
+occurrence count for 5 is 4. (Hint: Maintain two variables, max and count. The variable max stores the current maximum 
+number, and count stores its occurrences. Initially, assign the first number to max and 1 to count. Compare each 
+subsequent number with max. If the number is greater than max, assign it to max and reset count to 1. If the number is 
+equal to max, increment count by 1.)
+Enter a number (0: for end of input): 3
+Enter a number (0: for end of input): 5
+Enter a number (0: for end of input): 2
+Enter a number (0: for end of input): 5
+Enter a number (0: for end of input): 5
+Enter a number (0: for end of input): 5
+Enter a number (0: for end of input): 0
+The largest number is 5
+The occurrence count of the largest number is 4
+"""
+
+def big_number(numbers):
+    m = max(numbers)
+    count = 0
+    for i in range(len(numbers)):
+        if numbers[i] == m:
+            count += 1
+    return m, count
+
+
+"""
+Write a program to sum the following series and find the EXACT value:
+1/3  +  3/5  +  5/7  +  7/9  +  9/11  + .... +  95/97  +  97/99
+"""

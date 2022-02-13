@@ -1,4 +1,4 @@
-from advanced_fns import table_m2
+from advanced_fns import twin_primes
 
 """
 Write a program that reads an integer and displays all its smallest factors, also known as prime factors. For example, 
@@ -29,4 +29,4 @@ if the input integer is 120, the output should be as follows:
 
 if __name__ == '__main__':
 
-   table_m2()
+    twin_primes()

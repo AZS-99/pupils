@@ -47,4 +47,41 @@ def tuition():
     piggy_bank = 10000
     for i in range(9):
         piggy_bank = piggy_bank * 1.05
-    total = piggy_bank *
+    total = piggy_bank
+    for i in range(3):
+        piggy_bank = piggy_bank * 1.05
+        total = round(total + piggy_bank,2)
+    return total
+
+
+"""
+(Find the smallest n such that n^2 > 12,000) Use a while loop to find the smallest integer n such that n^2 is greater 
+than 12,000.
+"""
+def smallest():
+    n = 2
+    while n ** 2 < 12000:
+        n = n + 1
+    return n
+
+
+"""
+Write a program that reads an integer and displays all its smallest factors, also known as prime factors. For example, 
+if the input integer is 120, the output should be as follows:
+2, 2, 2, 3, 5
+"""
+def is_prime(num):
+    for i in range (0, num):
+        if i % num ==0:
+            return False
+    return True
+
+def primes(num):
+    primelst = []
+    for i in range(0, num):
+        if is_prime(i):
+            primelst.append(i)
+    return primelst
+
+
+
