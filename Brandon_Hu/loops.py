@@ -7,6 +7,9 @@ Kilograms   Pounds
 197         433.4
 199         437.8
 """
+import math
+
+
 def kilo_pound():
     print("{:<10} {:<10}".format("kilogram", "pounds"))
     for i in range(1, 200, 2):
@@ -71,17 +74,46 @@ if the input integer is 120, the output should be as follows:
 2, 2, 2, 3, 5
 """
 def is_prime(num):
-    for i in range (0, num):
-        if i % num ==0:
+    for i in range(2, num):
+        if num % i == 0:
             return False
     return True
 
 def primes(num):
     primelst = []
-    for i in range(0, num):
+    for i in range(2, num):
         if is_prime(i):
             primelst.append(i)
     return primelst
+
+def factors(num):
+    prime_lst = primes(num)
+    factors = []
+    for prime in prime_lst:
+        while num % prime == 0:
+            factors.append(prime)
+            num //= prime
+    return factors
+
+
+"""
+Write a program to sum the following series and find the EXACT value:
+1/3  +  3/5  +  5/7  +  7/9  +  9/11  + .... +  95/97  +  97/99
+"""
+class Fraction:
+    def __init__(self, numerator, denominator):
+        gcd = math.gcd(numerator, denominator)
+        self.numerator = numerator // gcd
+        self.denominator = denominator // gcd
+
+    def __add__(self, other):
+
+
+
+
+
+
+
 
 
 

@@ -1,6 +1,6 @@
-from loops import smallest
+from loops import factors
 if __name__ == '__main__':
-    print(smallest())
+    print(factors(120))
 
 
 
