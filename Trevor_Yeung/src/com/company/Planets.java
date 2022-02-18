@@ -39,5 +39,41 @@ Sample Output
  */
 
 
+import java.util.ArrayList;
+
 public class Planets {
+
+    public static double alignmentPeriod2(double m1, double m2) {
+        double angularV1 = (Math.PI*2)/m1;
+        double angularV2 = (Math.PI*2)/m2;
+        double relativeAngularVelocity = Math.abs(angularV1-angularV2);
+        return (double)Math.round(((200*Math.PI)/relativeAngularVelocity))/100;
+    }
+
+    public static double GCD(double n1, double n2) {
+        if (n2 == 0) return n1;
+        return GCD(n2, n1 % n2);
+    }
+
+    public static double LCM2(double n1, double n2) {
+        return n1*n2/GCD(n1, n2);
+    }
+
+    public static double LCM(ArrayList<Double> l) {
+        var nextLayer = new ArrayList<Double>();
+        if (l.size() == 1) return l.get(0);
+        for (int i = 0; i < l.size()-1; i++) {
+            nextLayer.add(LCM2(l.get(i), l.get(i+1)));
+        }
+        return LCM(nextLayer);
+    }
+
+    public static double alignmentPeriod(ArrayList<Double> l) {
+        var l2 = new ArrayList<Double>();
+        for (int i = 0; i < l.size()-1; i++) {
+            l2.add(alignmentPeriod2(l.get(i), l.get(i+1)));
+        }
+        return LCM(l2);
+    }
+
 }

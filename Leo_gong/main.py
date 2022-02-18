@@ -1,5 +1,4 @@
-from advanced_fns import twin_primes
-
+from classes import Account
 """
 Write a program that reads an integer and displays all its smallest factors, also known as prime factors. For example, 
 if the input integer is 120, the output should be as follows:
@@ -28,5 +27,10 @@ if the input integer is 120, the output should be as follows:
 #    return factors_lst
 
 if __name__ == '__main__':
-
-    twin_primes()
+#print the id, balance, monthly interest rate, and monthly interest.
+    a = Account(1122, 20000, (4.5 / 100))
+    a.withdraw(2500)
+    a.deposit(3000)
+    m = a.getMonthlyInterestRate()
+    m2 = a.getMonthlyInterest()
+    print(a.id, a.balance, m, m2)

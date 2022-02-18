@@ -6,6 +6,7 @@ Write a test program that uses this function to display the first 100 pentagonal
 numbers with 10 numbers on each line.
 """
 import math
+import random
 
 
 def pentagonal_number(n):
@@ -447,3 +448,33 @@ point is 5
 You rolled 2 + 5 = 7
 You lose
 """
+def dice_game():
+    num1 = random.randint(1, 6)
+    num2 = random.randint(1, 6)
+    dice_sum = num1 + num2
+    print("You rolled", num1, "+", num2, "=", dice_sum)
+    if dice_sum in [7, 11]:
+        print("You win")
+    elif dice_sum in [2, 3, 12]:
+        print("You lose")
+    else:
+        print("point is", dice_sum)
+        dice_sum2 = 0
+        while dice_sum2 not in [dice_sum, 7]:
+            num1 = random.randint(1, 6)
+            num2 = random.randint(1, 6)
+            dice_sum2 = num1 + num2
+        print("You rolled", num1, "+", num2, "=", dice_sum2)
+        if dice_sum2 == 7:
+            print("You lose")
+        else:
+            print("You win")
+
+
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius
+
+    def perimeter(self):
+        return 2 * math.pi * self.radius
+
