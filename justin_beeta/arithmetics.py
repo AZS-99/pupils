@@ -109,3 +109,74 @@ def annual(investmentAmount, annualinterestrate, numberOfYears):
     numberOfMonths = numberOfYears * 12
     futureInvestmentValue = investmentAmount * (1 + monthlyInterestRate) ** numberOfMonths
     return futureInvestmentValue
+
+
+"""
+Write a program that reads three edges for a triangle and computes the perimeter if the input is valid. Otherwise, 
+display that the input is invalid. The input is valid if the sum of every pair of two edges is greater than the 
+remaining edge. Here is a sample run:
+
+Enter three edges: 1, 1, 1
+The perimeter is 3
+
+Enter three edges: 1, 1, 3
+The input is invalid
+"""
+def get_triangle_perimeter(edge1, edge2, edge3):
+    if edge1 + edge2 <= edge3 or edge1 + edge3 <= edge2 or edge2 + edge3 <= edge1:
+        print("invalid")
+    else:
+        print("The perimeter is", edge1 + edge2 + edge3)
+
+
+"""
+Write a program that reads the subtotal and the gratuity rate and computes the gratuity and total. For example, 
+if the user enters 10 for the subtotal and 15% for the gratuity rate, the program displays 1.5 as the gratuity and 11.5 
+as the total. Here is a sample run:
+Enter the subtotal and a gratuity rate: 15.69, 15
+The gratuity is 2.35 and the total is 18.04
+"""
+def gratuity(subtotal, gratuity_rate):
+    gratuity = subtotal * (gratuity_rate / 100)
+    the_total = subtotal + gratuity
+    return round(gratuity, 2), round(the_total, 2)
+
+
+"""
+Write a program that prompts the user to enter three integers and displays them in ascending order.
+Sample run:
+Enter 3 numbers: 5, 4, 1
+Arranged: [1, 4, 5]
+"""
+def ascending_order(num1, num2, num3):
+    lst = [num1, num2, num3]
+    lst.sort()
+    return lst
+
+
+"""
+Suppose you shop for rice and find it in two different sized packages. You would like to write a program to compare the 
+costs of the packages. The program prompts the user to enter the weight and price of each package and then displays the 
+one with the better price. 
+
+Here is a sample run:
+Enter weight and price for package a: 50, 24.59
+Enter weight and price for package b: 25, 12.99
+Package 1 has the better price.
+"""
+def rice(weight1, price1, weight2, price2):
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

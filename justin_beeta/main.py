@@ -1,6 +1,7 @@
 import math
-from arithmetics import water
-from arithmetics import annual
+from arithmetics import get_triangle_perimeter
+from arithmetics import ascending_order
+from arithmetics import gratuity
 """
 Assume a runner runs 14 kilometers in 45 minutes and 30 seconds. Write a program that displays the average speed in 
 miles per hour. (Note that 1 mile is 1.6 kilometers.)
@@ -54,7 +55,14 @@ def volume(radius, height):
 
 
 if __name__ == '__main__':
-    print(annual(1000, 4.25, 1))
+    num1, num2, num3 = input("Enter three numbers:").split(", ")
+    num1 = int(num1)
+    num2 = int(num2)
+    num3 = int(num3)
+    print(ascending_order(num1, num2, num3))
+
+
+
 
 
 
