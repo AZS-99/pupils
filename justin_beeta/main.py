@@ -1,7 +1,8 @@
 import math
-from arithmetics import get_triangle_perimeter
-from arithmetics import ascending_order
-from arithmetics import gratuity
+
+from arithmetics import rice
+from arithmetics import reverse_order
+from arithmetics import triangle_area
 """
 Assume a runner runs 14 kilometers in 45 minutes and 30 seconds. Write a program that displays the average speed in 
 miles per hour. (Note that 1 mile is 1.6 kilometers.)
@@ -55,17 +56,14 @@ def volume(radius, height):
 
 
 if __name__ == '__main__':
-    num1, num2, num3 = input("Enter three numbers:").split(", ")
-    num1 = int(num1)
-    num2 = int(num2)
-    num3 = int(num3)
-    print(ascending_order(num1, num2, num3))
-
-
-
-
-
-
+    x1, y1, x2, y2, x3, y3 = input("Enter three point for a triangle: ").split(", ")
+    x1 = float(x1)
+    y1 = float(y1)
+    x2 = float(x2)
+    y2 = float(y2)
+    x3 = float(x3)
+    y3 = float(y3)
+    print("The area of the triangle is", triangle_area(x1, y1, x2, y2, x3, y3))
 
 
 

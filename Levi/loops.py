@@ -1,3 +1,6 @@
+import math
+import sys
+sys.setrecursionlimit(150000)
 """
 Suppose you save $100 each month into a savings account with an annual interest rate of 5%. Therefore, the monthly
 interest rate is 0.05/12 = 0.00417. After the first month, the value in the account becomes
@@ -125,21 +128,8 @@ def prime_factors(integer):
 
 
 """
-Write a program that reads integers, finds the largest of them, and counts its occurrences. Assume that the input ends 
-with number 0. Suppose that you entered 3 5 2 5 5 5 0; the program finds that the largest number is 5 and the 
-occurrence count for 5 is 4. (Hint: Maintain two variables, max and count. The variable max stores the current maximum 
-number, and count stores its occurrences. Initially, assign the first number to max and 1 to count. Compare each 
-subsequent number with max. If the number is greater than max, assign it to max and reset count to 1. If the number is 
-equal to max, increment count by 1.)
-Enter a number (0: for end of input): 3
-Enter a number (0: for end of input): 5
-Enter a number (0: for end of input): 2
-Enter a number (0: for end of input): 5
-Enter a number (0: for end of input): 5
-Enter a number (0: for end of input): 5
-Enter a number (0: for end of input): 0
-The largest number is 5
-The occurrence count of the largest number is 4
+
+
 """
 
 def big_number(numbers):
@@ -155,3 +145,92 @@ def big_number(numbers):
 Write a program to sum the following series and find the EXACT value:
 1/3  +  3/5  +  5/7  +  7/9  +  9/11  + .... +  95/97  +  97/99
 """
+
+class Fraction:
+
+    def __init__(self, numerator, denominator):
+        x = math.gcd(numerator, denominator)
+        self.numerator = numerator // x
+        self.denominator = denominator // x
+
+    def __eq__(self, other):
+        return self.numerator == other.numerator and self.denominator == other.denominator
+
+    def __str__(self):
+        return "{0}/{1}".format(self.numerator, self.denominator)
+
+    def __add__(self, other):
+        y = math.lcm(self.denominator, other.denominator)
+        a = (y // self.denominator) * self.numerator
+        b = (y // other.denominator) * other.numerator
+        return Fraction(a + b, y)
+
+    def __iadd__(self, other):
+        return self + other
+
+
+def add_fractions():
+    total = Fraction(0, 1)
+    for i in range(1, 97, 2):
+        total += Fraction(i, i+2)
+    return total
+
+
+"""
+You can approximate e by using the following series
+e = 1 + 1/1! + 1/2! + 1/3! + ... + 1/i!
+Write a program that displays the e value for i = 10000, 20000, . . ., and 100000.
+"""
+def f(i):
+    if i < 2:
+        return i
+    return f(i - 1) * i
+
+def factorial(i):
+    total_1 = Fraction(1, 1)
+    for a in range(1, i + 1):
+        total_1 += Fraction(1, f(i))
+    return total_1
+
+def factorial_2():
+    for b in range(10000, 10001, 10000):
+        print(factorial(b))
+
+
+"""
+Write a program that computes the following summation:
+1 / (√1 + √2)  +  1 / (√2 + √3)  +  1 / (√3 + √4)  + .... +  1 / (√624 + √625)
+"""
+
+def square_root():
+    e = 0
+    for i in range(1, 625):
+        e += 1 / (math.sqrt(i) + math.sqrt(i + 1))
+    return round(e, 1)
+
+
+"""
+Write a program that displays all possible combinations for picking two numbers from integers 1 to 7. Also display the 
+total number of combinations.
+Sample Output:
+1 2
+1 3
+1 4
+1 5
+1 6
+1 7
+2 3
+2 4
+...
+...
+5 6
+5 7
+6 7
+The total number of all combinations is 21
+"""
+
+def combinations():
+
+    for i in range(1, 7):
+        for j in range(2, 8):
+            print(i, j)

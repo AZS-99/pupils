@@ -160,11 +160,55 @@ costs of the packages. The program prompts the user to enter the weight and pric
 one with the better price. 
 
 Here is a sample run:
-Enter weight and price for package a: 50, 24.59
-Enter weight and price for package b: 25, 12.99
+Enter weight and price for package 1: 50, 24.59
+Enter weight and price for package 2: 25, 12.99
 Package 1 has the better price.
 """
 def rice(weight1, price1, weight2, price2):
+    pound_a = weight1 / price1
+    pound_b = weight2 / price2
+    if pound_a > pound_b:
+        return 1
+    else:
+        return 2
+
+
+"""
+Write a program that prompts the user to enter a four-digit integer and displays the number in reverse order. 
+Here is a sample run:
+Enter an integer: 3125
+The reversed number is 5213
+"""
+def reverse_order(num):
+    x = str(num)
+    y = x[::-1]
+    return y
+
+
+"""
+Write a program that prompts the user to enter the three points (x1, y1), (x2, y2), and (x3, y3) of a triangle and
+displays its area. The formula for computing the area of a triangle is
+
+s = (side1 + side2 + side3)/2
+area = √(s(s - side1)(s - side2)(s - side3))
+
+Sample Run:
+Enter three points for a triangle: 1.5, -3.4, 4.6, 5, 9.5, -3.4
+The area of the triangle is 33.6
+"""
+def triangle_area(x1, y1, x2, y2, x3, y3):
+    horizontal1 = x2 - x1
+    height1 = y2 - y1
+    side1 = math.sqrt(horizontal1 ** 2 + height1 ** 2)
+    horizontal2 = x3 - x2
+    height2 = y3 - y2
+    side2 = math.sqrt(horizontal2 ** 2 + height2 ** 2)
+    horizontal3 = x1 - x3
+    height3 = y1 - y3
+    side3 = math.sqrt(horizontal3 ** 2 + height3 ** 2)
+    s = (side1 + side2 + side3) / 2
+    area = math.sqrt(s * (s - side1) * (s - side2) * (s - side3))
+    return round(area, 1)
 
 
 

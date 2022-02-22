@@ -6,7 +6,8 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        System.out.println(Palindrome.longestPalindrome("AHAHJHFYUBNMLOIUYTRERTYUIOLMNBAGWOIS"));
+        Fibonacci f = new Fibonacci();
+        System.out.println(f.fibonacci(90));
 
     }
 }
