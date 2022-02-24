@@ -100,20 +100,76 @@ def factors(num):
 Write a program to sum the following series and find the EXACT value:
 1/3  +  3/5  +  5/7  +  7/9  +  9/11  + .... +  95/97  +  97/99
 """
-class Fraction:
-    def __init__(self, numerator, denominator):
-        gcd = math.gcd(numerator, denominator)
-        self.numerator = numerator // gcd
-        self.denominator = denominator // gcd
-
-    def __add__(self, other):
+def adding():
+    total = 0
+    for i in range(1, 98, 2):
+        total += i / (i + 2)
+    return round(total, 2)
 
 
 
 
 
 
+"""
+You can approximate e by using the following series
+e = 1 + 1/√1 + 1/√2 + 1/√3 + ... + 1/√i
+Write a program that displays the e value for i = 10000, 20000, . . ., and 100000.
+"""
+
+def e():
+    total = 1
+    for i in range(1, 100001):
+        total += 1 / math.sqrt(i)
+    return round(total)
 
 
+"""
+Write a program that reads integers, finds the largest of them, and counts its occurrences. Assume that the input ends 
+with number 0. Suppose that you entered 3 5 2 5 5 5 0; the program finds that the largest number is 5 and the 
+occurrence count for 5 is 4. (Hint: Maintain two vari- ables, max and count. The variable max stores the current maximum 
+number, and count stores its occurrences. Initially, assign the first number to max and 1 to count. Compare each 
+subsequent number with max. If the number is greater than max, assign it to max and reset count to 1. If the number is 
+equal to max, incre- ment count by 1.)
+Enter a number (0: for end of input): 3
+Enter a number (0: for end of input): 5
+Enter a number (0: for end of input): 2
+Enter a number (0: for end of input): 5
+Enter a number (0: for end of input): 5
+Enter a number (0: for end of input): 5
+Enter a number (0: for end of input): 0
+The largest number is 5
+The occurrence count of the largest number is 4
+"""
+def occurrence():
+    ipt = -2
+    lst = []
+    while ipt != 0:
+        ipt = int(input("Enter a number (0: for end of input):"))
+        lst.append(ipt)
+    biggest_num = max(lst)
+    biggest_num_count = lst.count(biggest_num)
+    return biggest_num, biggest_num_count
 
 
+"""
+Write a program that displays all possible combinations for picking two numbers from integers 1 to 7. Also display the 
+total number of combinations.
+Sample Output:
+1 2
+1 3
+1 4
+1 5
+1 6
+1 7
+2 3
+2 4
+...
+...
+5 6
+5 7
+6 7
+The total number of all combinations is 21
+"""
+def combinations():
+    for i in ra
