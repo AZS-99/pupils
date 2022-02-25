@@ -222,4 +222,5 @@ class LinearEquation:
 
     "x = (ed - bf) / (ad - bc) y = (af - ec) / (ad - bc)"
     def getX(self):
-        x = (self.e * self)
+        return (self.e * self.d - self.b * self.f) / (self.a * self.b - self.b * self.c)
+
