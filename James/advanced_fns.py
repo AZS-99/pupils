@@ -259,4 +259,129 @@ Write a function that returns m(i) for a given i and write a test program that d
  901                 3.1427
 """
 def picalc(i):
-    for i in range()
+    total = 0
+    sign = True
+    for j in range(1, 2*i, 2):
+        if sign == False:
+            total -= (1 / j)
+        elif sign == True:
+            total += (1 / j)
+        sign = not sign
+    total *= 4
+    return (round(total, 4))
+
+def printpi():
+    print("{:<10} {:<10}".format("i", "m(i)"))
+    for i in range(1, 902, 100):
+        print("{:<10} {:<10}".format(i, picalc(i)))
+
+"""
+(Math: approximate the square root) There are several techniques for implementing the sqrt function in the math module. 
+One such technique is known as the Babylonian function. It approximates the square root of a number, n, by repeatedly 
+performing a calculation using the following formula:
+                            nextGuess = (lastGuess + (n / lastGuess)) / 2
+When nextGuess and lastGuess are almost identical, nextGuess is the approximated square root. The initial guess can be 
+any positive value (e.g., 1). This value will be the starting value for lastGuess. If the difference between nextGuess 
+and lastGuess is less than a very small number, such as 0.0001, you can claim that nextGuess is the approximated square 
+root of n. If not, nextGuess becomes lastGuess and the approximation process continues. Implement the following function 
+that returns the square root of n.
+"""
+
+def calcsqrt(n):
+    nextGuess = n / 2
+    lastGuess = 0
+    while abs(nextGuess - lastGuess) >= 0.0001:
+        lastGuess = nextGuess
+        nextGuess = (lastGuess + (n / lastGuess)) / 2
+
+    return round(nextGuess, 3)
+
+
+"""
+(Convert milliseconds to hours, minutes, and seconds) Write a function that converts milliseconds to hours, minutes, 
+and seconds using the following header:
+def convertMillis(millis):
+The function returns a string as hours:minutes:seconds. For example, convertMillis(5500) returns the string 0:0:5, 
+convertMillis(100000) returns the string 0:1:40, and convertMillis(555550000) returns the string 154:19:10.
+Write a test program that prompts the user to enter a value for milliseconds and displays a string in the format of 
+hours:minutes:seconds.
+"""
+def timeprint(millis):
+    total_seconds = millis // 1000
+    seconds = total_seconds % 60
+    mins = total_seconds // 60
+    hours = mins // 60
+    mins = mins % 60
+    print("{0}:{1}:{2}".format(hours,mins,seconds))
+
+
+"""
+A palindromic prime is a prime number that is also palindromic. For example, 131 is a prime and also a palindromic 
+prime, as are 313 and 757. Write a program that displays the first 100 palindromic prime numbers. Display 10 numbers 
+per line and align the numbers properly, as follows:
+ 2     3     5     7    11    101    131   151   181   191
+313   353   373   383   727   757    787   797   919   929
+"""
+def palindrome(num):
+    if reverse(num) == num:
+        return True
+
+def palindromeprint():
+    currentnum = 1
+    pprimecount = 0
+    pprimes = []
+    loopcount = 0
+    while pprimecount < 100:
+        if isPalindrome(currentnum) and isPrime(currentnum):
+            pprimecount +=1
+            pprimes.append(currentnum)
+        currentnum += 1
+    for i in range(2):
+        for j in range(10):
+            loopcount += 1
+            print("{:<5}".format(pprimes[loopcount]), end=" ")
+        print()
+
+
+"""
+An emirp ( prime spelled backward) is a non-palindromic prime number whose reversal is also a prime. For example, both 
+17 and 71 are prime numbers, so 17 and 71 are emirps. Write a program that displays the first 100 emirps. Display 10 
+numbers per line and align the numbers properly, as follows:
+ 13   17   31   37   71   73   79   97  107  113
+149  157  167  179  199  311  337  347  359  389
+"""
+def emirps():
+    currentnum = 1
+    pemirpcount = 0
+    pemirps = []
+    loopcount = 0
+    while pemirpcount < 100:
+        if not isPalindrome(currentnum) and isPrime(reverse(currentnum)) and isPrime(currentnum):
+            pemirpcount +=1
+            pemirps.append(currentnum)
+        currentnum += 1
+
+    for i in range(2):
+        for j in range(10):
+            print("{:<5}".format(pemirps[loopcount]), end=" ")
+            loopcount += 1
+        print()
+
+
+"""
+(Mersenne prime) A prime number is called a Mersenne prime if it can be written in the form 2p - 1 for some positive 
+integer p. Write a program that finds all Mersenne primes with p ... 31 and displays the output as follows:
+p               2^p - 1 
+2               3
+3               7
+5               31
+.
+.
+.
+31
+"""
+def mersenneprimes():
+    print("{:<10}{:<10}".format("p", "2^p - 1"))
+    for i in range(2, 32):
+        if 1 % 2**i - 1 == 0:
+            print("{:<10}{:<10}".format(i, 2**i - 1))

@@ -1,8 +1,8 @@
-from loops import wl
+from loops import factors
 
 
 if __name__ == "__main__":
-    print(wl())
+    print(factors(120))
 
 
 

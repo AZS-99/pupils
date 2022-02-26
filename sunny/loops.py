@@ -91,7 +91,32 @@ if the input integer is 120, the output should be as follows:
 2, 2, 2, 3, 5
 """
 def is_prime(num):
-    prime =
+    for i in range(2,num):
+        if num % i == 0:
+            return False
+    return True
+
+def primes(num):
+    primes_lst = []
+    for i in range(2,num):
+        if is_prime(i):
+            primes_lst.append(i)
+    return primes_lst
+
+def factors(num):
+    factors_lst = []
+    primes_lst = primes(num)
+    for i in primes_lst:
+        while num % i == 0:
+            num = num // i
+            factors_lst.append(i)
+    return factors_lst
+
+
+
+
+
+
 
 
 
