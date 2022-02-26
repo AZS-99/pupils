@@ -1,8 +1,8 @@
-from loops import factors
+from loops import fractions
 
 
 if __name__ == "__main__":
-    print(factors(120))
+    print(fractions())
 
 
 

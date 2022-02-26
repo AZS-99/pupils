@@ -114,7 +114,26 @@ def factors(num):
 
 
 
+"""
+Write a program to sum the following series and find the EXACT value:
+1/3  +  3/5  +  5/7  +  7/9  +  9/11  + .... +  95/97  +  97/99
+"""
 
+def fractions():
+    total = 0
+    for i in range(1, 98, 2):
+        numerator = i
+        denominator = numerator + 2
+        fractions = numerator/denominator
+        total += fractions
+    return round(total, 4)
+
+
+"""
+You can approximate e by using the following series
+e = 1 + 1/1! + 1/2! + 1/3! + ... + 1/i!
+Write a program that displays the e value for i = 10000, 20000, . . ., and 100000.
+"""
 
 
 
