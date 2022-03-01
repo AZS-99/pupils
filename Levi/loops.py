@@ -230,7 +230,6 @@ The total number of all combinations is 21
 """
 
 def combinations():
-
     for i in range(1, 7):
         for j in range(2, 8):
             print(i, j)

@@ -16,7 +16,7 @@ price, and current price.
 ■ A method named getChangePercent() that returns the percentage changed
 from previousClosingPrice to currentPrice.
 """
-import math
+import math, time
 
 
 class Stock:
@@ -220,7 +220,48 @@ class LinearEquation:
         else:
             return True
 
-    "x = (ed - bf) / (ad - bc) y = (af - ec) / (ad - bc)"
     def getX(self):
-        return (self.e * self.d - self.b * self.f) / (self.a * self.b - self.b * self.c)
+        return (self.e * self.d - self.b * self.f) / (self.a * self.d - self.b * self.c)
 
+
+    def getY(self):
+        return (self.a * self.f - self.e * self.c) / (self.a * self.d - self.b * self.c)
+
+
+"""
+(Stopwatch) Design a class named StopWatch. The class contains:
+■ The private data fields startTime and endTime.
+■ A constructor that initializes startTime with the current time.
+■ A method named start() that resets the startTime to the current time.
+■ A method named stop() that sets the endTime to the current time.
+■ A method named getElapsedTime() that returns the elapsed time for the
+stop watch in milliseconds.
+Implement the class. Write a test program that measures the execution time of adding numbers from 1 to 1,000,000.
+"""
+class StopWatch:
+    def __init__(self):
+        self.startTime = time.time()
+        self.stopTime = float('inf')
+
+    def start(self):
+        self.startTime = time.time()
+
+    def stop(self):
+        self.stopTime = time.time()
+
+    def getElapsedTime(self):
+        return self.stopTime - self.startTime
+
+
+"""
+(Geometry: intersection) Suppose two line segments intersect. The two endpoints for the first line segment are (x1, y1)
+and (x2, y2) and for the second line segment are (x3, y3) and (x4, y4). Write a program that prompts the user to enter 
+these four endpoints and displays the intersecting point. (Hint: Use the LinearEquation class)
+ 
+Enter the endpoints of the first line segment: 2.0, 2.0, 0, 0
+Enter the endpoints of the second line segment: 0, 2.0, 2.0, 0
+The intersecting point is: (1.0, 1.0)
+"""
+class LinearEquation:
+    def geometry_intersection(self):
+        pass

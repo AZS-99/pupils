@@ -172,4 +172,7 @@ Sample Output:
 The total number of all combinations is 21
 """
 def combinations():
-    for i in ra
+    for i in range(1, 8):
+        for k in range(1, 8):
+            if i < k:
+                print(i, k)

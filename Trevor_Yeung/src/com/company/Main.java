@@ -6,8 +6,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        Fibonacci f = new Fibonacci();
-        System.out.println(f.fibonacci(90));
+        System.out.println(LuckyNumbers.luckyNumbers(1));
 
     }
 }
