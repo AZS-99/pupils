@@ -265,3 +265,40 @@ The intersecting point is: (1.0, 1.0)
 class LinearEquation:
     def geometry_intersection(self):
         pass
+
+
+
+"""
+(The Point class) Design a class named Point to represent a point with x- and y-coordinates. The class contains:
+■ Two private data fields x and y that represent the coordinates with get methods.
+■ A constructor that constructs a point with specified coordinates with default
+point (0, 0).
+■ A method named distance that returns the distance from this point to another
+point of the Point type.
+■ A method named isNearBy(p1) that returns true if point p1 is close to this
+point. Two points are close if their distance is less than 5.
+■ Implement the __str__ method to return a string in the form (x,y).
+Implement the class. Write a test program that prompts the user to enter 
+two points, displays the distance between them, and indicates whether they are near each other. Here are sample runs:
+
+Enter two points x1, y1, x2, y2: 2.1, 2.3, 19.1, 19.2
+The distance between the two points is 23.97
+The two points are not near each other
+
+Enter two points x1, y1, x2, y2: 2.1, 2.3, 2.3, 4.2
+The distance between the two points is 1.91
+The two points are near each other
+"""
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __str__(self):
+        return "({}, {})" .format(self.x, self.y)
+
+    def distance(self, other):
+        return math.sqrt(((self.x - other.x) ** 2) + ((self.y - other.y) ** 2))
+
+    def isNearBy(self, p1):
+        return self.distance(p1) <= 5

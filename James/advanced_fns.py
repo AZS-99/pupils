@@ -6,6 +6,7 @@ Write a test program that uses this function to display the first 100 pentagonal
 numbers with 10 numbers on each line.
 """
 import math
+import random
 import loops
 
 def getPentagonalNumber(num):
@@ -385,3 +386,76 @@ def mersenneprimes():
     for i in range(2, 32):
         if 1 % 2**i - 1 == 0:
             print("{:<10}{:<10}".format(i, 2**i - 1))
+
+
+"""
+(Twin primes) Twin primes are a pair of prime numbers that differ by 2. For example, 3 and 5, 5 and 7, and 11 and 13 
+are twin primes. Write a program to find all twin primes less than 1,000. Display the output as follows:
+ (3, 5)
+ (5, 7)
+ ...
+"""
+def twin_primes():
+    for i in range(2, 998):
+        if isPrime(i) and isPrime(i + 2):
+            print("(", i, ",", i + 2, ")")
+
+
+"""
+(Game: craps) Craps is a popular dice game played in casinos. Write a program to play a variation of the game, as 
+follows:
+Roll two dice. Each die has six faces representing values 1, 2, ..., and 6, respectively. Check the sum of the two 
+dice. If the sum is 2, 3, or 12 (called craps), you lose; if the sum is 7 or 11 (called natural), you win; if the sum 
+is another value (i.e., 4, 5, 6, 8, 9, or 10), a point is established. Continue to roll the dice until either a 7 or the 
+same point value is rolled. If 7 is rolled, you lose. Otherwise, you win.
+Your program acts as a single player. Here are some sample runs:
+
+Sample Run 1:
+You rolled 5 + 6 = 11
+You win
+
+Sample Run 2: 
+You rolled 1 + 2 = 3
+You lose
+
+Sample Run 3:
+You rolled 4 + 4 = 8
+point is 8
+You rolled 6 + 2 = 8
+You win
+
+Sample Run 4:
+You rolled 3 + 2 = 5
+point is 5
+You rolled 2 + 2 = 4
+You rolled 1 + 2 = 3
+You rolled 2 + 5 = 7
+You lose
+"""
+def craps():
+    dice1 = random.randint(1, 6)
+    dice2 = random.randint(1, 6)
+    dice_sum = dice1 + dice2
+    point = 0
+    craps_list = [2, 3, 12]
+    naturals = [7, 11]
+    print("You rolled", dice1, "+", dice2, "=", dice_sum)
+    if dice_sum in craps_list:
+        print("You lose")
+    elif dice_sum in naturals:
+        print("You win")
+    elif point < 1:
+        point = dice_sum
+        print("Point is", dice_sum)
+        dice_sum = random.randint(13, 15)
+        while dice_sum != point:
+            dice1 = random.randint(1, 6)
+            dice2 = random.randint(1, 6)
+            dice_sum = dice1 + dice2
+            print("You rolled", dice1, "+", dice2, "=", dice_sum)
+            if dice_sum == 7:
+                print("You lose")
+                return
+            elif dice_sum == point:
+                print("You win")
+                return

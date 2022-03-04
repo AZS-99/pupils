@@ -7,6 +7,8 @@ Write a program to display the population for the next five years. Assume the cu
 and one year has 365 days. Hint: in Python, you can use integer division operator // to perform division. The result is
 an integer. For example, 5 // 4 is 1 (not 1.25) and 10 // 4 is 2 (not 2.5).
 """
+import math
+
 
 def us_population(population):
     birth = 365 * 24 * 60 * 60 // 7
@@ -111,9 +113,78 @@ Enter weight and price for package 2: 25, 12.99
 Package 1 has the better price.
 """
 def better_price(weight1,price1,weight2,price2):
-    price_p_pound1 = price1 / weight1
-    price_per_pound2 = price2 / weight2
-    if price_per_pound1 > price_per_pound2:
-        return 2
+    # price_p_pound1 = price1 / weight1
+    # price_per_pound2 = price2 / weight2
+    # if price_per_pound1 > price_per_pound2:
+    #     return 2
+    # else:
+    #     return 1
+    pass
+
+
+"""
+Write a program that prompts the user to enter the three points (x1, y1), (x2, y2), and (x3, y3) of a triangle and
+displays its area. The formula for computing the area of a triangle is
+
+s = (side1 + side2 + side3)/2
+area = √(s(s - side1)(s - side2)(s - side3))
+
+Sample Run:
+Enter three points for a triangle: 1.5, -3.4, 4.6, 5, 9.5, -3.4
+The area of the triangle is 33.6
+"""
+def cal_tri_area(x1,y1,x2,y2,x3,y3):
+    side1 = math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
+    side2 = math.sqrt((x2 - x3) ** 2 + (y2 - y3) ** 2)
+    side3 = math.sqrt((x1 - x3) ** 2 + (y1 - y3) ** 2)
+    s = (math.sqrt((x1 - x3) ** 2 + (y1 - y3) ** 2) + side2 + side1) / 2
+    return math.sqrt(s * (s - side1) * (s - side2) * (s - side3))
+
+
+"""
+If you know the balance and the annual percentage interest rate, you can compute the interest on the next monthly 
+payment using the following formula:
+         interest = balance * (annualInterestRate / 1200)
+Write a program that reads the balance and the annual percentage interest rate and displays the interest for the next 
+month. Here is a sample run:
+Enter balance and interest rate (e.g., 3 for 3%): 1000, 3.5 
+The interest is 2.91667
+"""
+def interest(balance,rate):
+    return balance * rate / 1200
+
+
+"""
+Write a program that prompts the user to enter an integer and checks whether the number is divisible by both 5 and 6, 
+divisible by 5 or 6, or just one of them (but not both).
+
+sample run 1:
+
+Enter an integer: 10
+Is 10 divisible by 5 and 6? False
+Is 10 divisible by 5 or 6? True
+Is 10 divisible by 5 or 6, but not both? True
+
+sample run 2:
+
+Enter an integer: 30
+Is 30 divisible by 5 and 6? True
+Is 30 divisible by 5 or 6? True
+Is 30 divisible by 5 or 6, but not both? False
+"""
+def whether(number):
+    rem1 = number % 5
+    rem2 = number % 6
+    five_xor_six = False
+    if rem1 == 0 and rem2 == 0:
+        five_and_six = True
     else:
-        return 1
+        five_and_six = False
+    if rem1 == 0 or rem2 ==0:
+        five_or_six = True
+        if rem1 != 0 or rem2 != 0:
+            five_xor_six = True
+    else:
+        five_or_six = False
+
+    return five_and_six, five_or_six, five_xor_six

@@ -1,3 +1,6 @@
+import math
+
+
 def power(base, exponent):
     total = 1
     for i in range(exponent):
@@ -74,25 +77,54 @@ def is_prime(num):
             return False
     return True
 
-def primes(num):
-    primes_lst = []
+def prime_lst(num):
+    lst = []
     for i in range(2, num):
         if is_prime(i):
-            primes_lst.append(i)
-    return primes_lst
-
+            lst.append(i)
+    return lst
 
 def factors(num):
+    lst = prime_lst(num)
+    factors_lst = []
+    for prime in lst:
+        while num % prime == 0:
+            factors_lst.append(prime)
+            num = num // prime
+    return factors_lst
+
+"""
+Write a program to sum the following series and find the EXACT value:
+1/3  +  3/5  +  5/7  +  7/9  +  9/11  + .... +  95/97  +  97/99
+1 + 3 + 5 + 7 + ..... + 97
+"""
+def sum():
+    total = 0
+    for i in range(1, 98, 2):
+        total = total + (i / (i + 2))
+    return round(total, 2)
 
 
+"""
+Write a program that computes the following summation:
+1 / (√1 + √2)   +   1 / (√2 + √3)   +   1 / (√3 + √4)   + .... +   1 / (√624 + √625)
+"""
+def summation():
+    total = 0
+    for i in range(1, 625):
+        total = total + 1 / (math.sqrt(i) + math.sqrt(i + 1))
+    return round(total, 2)
 
 
-
-
-
-
-
-
+"""
+You can approximate e by using the following series
+e = 1 + 1/1! + 1/2! + 1/3! + ... + 1/i!
+Write a program that displays the e value for i = 10000, 20000, . . ., and 100000.
+"""
+def factorial(x):
+    total = 1
+    for i in range(1, x + 1):
+        pass
 
 
 
