@@ -65,7 +65,7 @@ def tables():
         kilometers = miles * 1.609
         kilometers_2 = i * 5 + 15
         miles_2 = kilometers_2 * 0.621
-        print("{:<15} {:<15} | {:<15} {:<15}".format(miles, kilometers, kilometers_2, miles_2))
+
 
 
 """

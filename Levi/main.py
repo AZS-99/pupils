@@ -1,10 +1,9 @@
-from advanced_fns import displaySortedNumbers
-from advanced_fns import isPalindrome
-from advanced_fns import reverse
-from advanced_fns import getPentagonalNumber2
-from advanced_fns import sumDigits
+
+from advanced_fns import printChars
 if __name__ == '__main__':
-    print(displaySortedNumbers(3, 2.4 , 5))
+    printChars("A", "Z", 10)
+
+
 
 
 

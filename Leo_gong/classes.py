@@ -302,3 +302,56 @@ class Point:
 
     def isNearBy(self, p1):
         return self.distance(p1) <= 5
+
+
+"""
+(Geometry: The Circle2D class) Define the Circle2D class that contains:
+■ Two private float data fields named x and y that specify the center of the circle with get/set methods.
+■ A private data field radius 
+■ A constructor that creates a circle with the specified x, y, and radius. The
+default values are all 0.
+■ A method getArea() that returns the area of the circle.
+■ A method getPerimeter() that returns the perimeter of the circle.
+■ A method containsPoint(x, y) that returns True if the specified point (x,y) is inside this circle.
+■ A method contains(circle2D) that returns True if the specified circle is
+inside this circle 
+■ A method overlaps(circle2D) that returns True if the specified circle
+overlaps with this circle.
+■ Implement the __contains__(another) method that returns True if this circle is contained in another circle
+
+■ Implement the __cmp__, __lt__, __le__, __eq__, __ne__, __gt__, __ge__ methods that compare two circles based on 
+their radius.
+
+Sample Run: 
+Enter x1, y1, radius1: 5, 5.5, 10
+Enter x2, y2, radius2: 9, 1.3, 10
+Area for c1 is 314.1592653589793
+Perimeter for c1 is 62.83185307179586
+Area for c2 is 314.1592653589793
+Perimeter for c2 is 62.83185307179586
+c1 contains the center of c2? True
+c1 contains c2? False
+c1 overlaps c2? True
+"""
+class Circle2D:
+    def __init__(self, x,  y, radius):
+        self.x = x
+        self.y = y
+        self.radius = radius
+
+    def getArea(self):
+        return math.pi * self.radius ** 2
+
+    def getPerimeter(self):
+        return 2 * self.radius * math.pi
+
+    def containsPoint(self, x2, y2):
+        return ((x2 - self.x) ** 2) + ((y2 - self.y) ** 2) <= self.radius ** 2
+
+    def __contains__(self, other):
+        difference_btw_centres = math.sqrt((self.x - other.x) ** 2 + (self.y - other.y) ** 2)
+        return difference_btw_centres + other.radius <= self.radius
+
+    def overlaps(self, other):
+        difference_btw_centres = math.sqrt((self.x - other.x) ** 2 + (self.y - other.y) ** 2)
+        return self.radius + other.radius > difference_btw_centres

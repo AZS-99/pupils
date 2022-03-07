@@ -1,15 +1,10 @@
 import math
-from loops import summation
 
 
-from loops import sum
-
-
-
+from loops import harder_reverse_question
+from loops import find_the_loops
 if __name__ == '__main__':
-    print(summation())
-
-
+    find_the_loops()
 
 
 

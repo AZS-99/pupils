@@ -176,3 +176,5 @@ def find_genes(s):
         print(s[first + 3:tga_index])
     else:
         print("no gene is found")
+
+
