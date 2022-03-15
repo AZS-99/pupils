@@ -1,3 +1,3 @@
-from arithmetics import whether
 if __name__ == '__main__':
-    number = input("")
+    for i in range(1, 11):
+        print(5, "X", i, "=", i * 5)

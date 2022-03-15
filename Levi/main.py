@@ -1,11 +1,6 @@
-
-from advanced_fns import printChars
+from advanced_fns import estimatePi
 if __name__ == '__main__':
-    printChars("A", "Z", 10)
-
-
-
-
+    print(estimatePi(1))
 
 
 

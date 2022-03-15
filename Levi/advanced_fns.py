@@ -164,6 +164,105 @@ def printChars(ch1, ch2, numberPerLine):
         print()
 
 
+"""
+(Conversions between feet and meters) Write a module that contains the following two functions:
+# Converts from feet to meters
+def footToMeter(foot):
+# Converts from meters to feet
+def meterToFoot(meter):
+The formulas for the conversion are:
+                                foot = meter / 0.305    
+                                meter = 0.305 * foot
+Write a test program that invokes these functions to display the following tables:
+Feet       Meters  | Meters     Feet
+1.0        0.305   | 20.0       66.574
+2.0        0.610   | 26.0       81.967
+...
+9.0        2.745   | 68         222.951
+10.0       3.050   | 74         242.623
+"""
+
+def footToMeter(foot):
+    meter = 0.305 * foot
+    return meter
+
+def meterToFoot(meter):
+    foot = meter / 0.305
+    return foot
+
+def tables2():
+    print("{:<15} {:<15} | {:<15} {:<15}".format("Feet", "Meters", "Meters", "Feet"))
+    count = 0
+    for i in range(1, 11):
+        feet = i
+        meters = footToMeter(feet)
+        meters2 = i * 6 + 14
+        feet2 = round(meterToFoot(meters2),3)
+        count += 1
+        print("{:<15} {:<15} | {:<15} {:<15}".format(feet, meters, meters2, feet2))
 
 
+"""
+Provide the isPrime(number) function for testing whether a number is prime. Use this function to find the number of 
+prime numbers less than 10,000.
+"""
+def isPrime(number):
+    for i in range(2, number):
+        if number % i == 0:
+            return False
+    return True
 
+def count():
+    count2 = 0
+    for i in range(2, 10001):
+        if isPrime(i) == True:
+            count2 += 1
+    return count2
+
+
+"""
+(Sum series) Write a function to compute the following series: 
+                    m(i)= 1/2 + 2/3 +  .... + i /(i + 1)
+Write a test program that displays the following table:
+i               m(i)
+1               0.5000
+2               1.1667
+... 
+19              16.4023
+20              17.3546
+"""
+
+def m(i):
+    total = 0
+    for j in range(1,i + 1):
+        total += j /(j + 1)
+    return round(total,4)
+
+def table():
+    print("{:<15} {:<15}".format("i", "m(i)"))
+    for i in range(1, 21):
+        print("{:<15} {:<15}".format(i, m(i)))
+
+
+"""
+(Estimate π) π can be computed using the following series:
+m(i) = 4(1 - 1/3 + 1/5 - 1/7 + 1/9 - 1/11 + .... + (-1)^(i+1)/(2i - 1)) 
+Write a function that returns m(i) for a given i and write a test program that displays the following table:
+ i                   m(i)
+ 1                   4.0000
+ 101                 3.1515
+ 201                 3.1466
+ 301                 3.1449
+ 401                 3.1441
+ 501                 3.1436
+ 601                 3.1433
+ 701                 3.1430
+ 801                 3.1428
+ 901                 3.1427
+"""
+
+def estimatePi(i):
+    total2 = 0
+    for l in range(1, i + 1):
+        total2 += (-1)**(l+1) / (2*l - 1)
+    return round(total2 * 4, 4)

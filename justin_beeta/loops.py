@@ -260,7 +260,7 @@ def factors(num):
 """
 Write a program to sum the following series and find the EXACT value:
 1/3  +  3/5  +  5/7  +  7/9  +  9/11  + .... +  95/97  +  97/99
-1 + 3 + 5 + 7 + ..... + 97
+
 """
 def sum():
     total = 0

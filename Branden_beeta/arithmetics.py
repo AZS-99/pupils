@@ -188,3 +188,88 @@ def whether(number):
         five_or_six = False
 
     return five_and_six, five_or_six, five_xor_six
+
+
+"""
+Write a program that prompts the user to enter the minutes (e.g., 1 billion), and displays the number of years and days
+for the minutes. For simplicity, assume a year has 365 days. Here is a sample run:
+
+Enter the number of minutes: 1000000000
+1000000000 minutes is approximately 1902 years and 214 days
+"""
+def min_2_years_and_days(minutes):
+    years = minutes // (60 * 24 * 365)
+    remainder = minutes % (60 * 24 * 365)
+    days = remainder // (24 * 60)
+    return years, days
+
+
+"""
+Write a program that reads an unspecified number of integers, determines how many positive and negative values have been 
+read, and computes the total and average of the input values (not counting zeros). Your program ends with the input 0. 
+Display the average as a floating-point number. Here is a sample run:
+
+Enter an integer, the input ends if it is 0: 1
+Enter an integer, the input ends if it is 0: 2
+Enter an integer, the input ends if it is 0: -1
+Enter an integer, the input ends if it is 0: 3
+Enter an integer, the input ends if it is 0: 0
+
+The number of positives is 3
+The number of negatives is 1
+The total is 5
+The average is 1.25
+"""
+def integer():
+    count_positive = 0
+    count_negative = 0
+    total = 0
+
+    x = -1
+    while x != 0:
+        x = int(input("Enter an integer, the input ends if it is 0:"))
+        if x < 0:
+            count_negative += 1
+        elif x > 0:
+            count_positive += 1
+        total = total + x
+    average = total / (count_positive + count_negative)
+    return count_positive, count_negative, total, average
+
+
+"""
+Write a program that prompts the user to enter the month and year and displays the number of days in the month. For 
+example, if the user entered month 2 and year 2000, the program should display that February 2000 has 29 days. If the 
+user entered month 3 and year 2005, the program should display that March 2005 has 31 days.
+"""
+def month_year(mont, yea):
+    if mont == 1:
+        month ="January"
+    elif mont == 2:
+        month = "Febuary"
+    elif mont == 3:
+        month = "March"
+    elif mont == 4:
+        month = "April"
+    elif mont == 5:
+        month = "May"
+    elif mont == 6:
+        month = "June"
+    elif mont == 7:
+        month = "July"
+    elif mont == 8:
+        month = "August"
+    elif mont == 9:
+        month = "September"
+    elif mont == 10:
+        month = "October"
+    elif mont == 11:
+        month = "November"
+    elif mont == 12:
+        month = "December"
+    if mont in [1, 3, 5, 7, 8, 10, 12]:
+        day = 31
+    elif mont in [4, 6, 9, 11]:
+        day = 30
+    elif mont == 2:
+        if

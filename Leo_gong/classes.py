@@ -355,3 +355,95 @@ class Circle2D:
     def overlaps(self, other):
         difference_btw_centres = math.sqrt((self.x - other.x) ** 2 + (self.y - other.y) ** 2)
         return self.radius + other.radius > difference_btw_centres
+
+
+
+"""
+(Geometry: The Rectangle2D class) Define the Rectangle2D class that contains:
+■ Two float data fields named x and y that specify the center of the rectangle with get/set methods. (Assume that the 
+rectangle sides are parallel to x- or y- axes.)
+■ The data fields width and height
+■ A constructor that creates a rectangle with the specified x, y, width, and
+height with default values 0.
+■ A method get_area() that returns the area of the rectangle.
+■ A method get_perimeter() that returns the perimeter of the rectangle.
+■ A method contains_point(x, y) that returns True if the specified point (x,y) is inside this rectangle 
+■ A method overlaps(Rectangle2D) that returns True if the specified
+rectangle overlaps with this rectangle 
+■ Implement the __contains__(other) method that returns True if this rectangle is contained in another rectangle.
+■ Implement the __cmp__, __lt__, __le__, __eq__, __ne__, __gt__, __ge__ methods that compare two rectangles based on 
+their areas.
+
+
+Implement the class. Write a test programme that prompts the user to enter two rectangles with center x-, y-coordinates, 
+width, and height, creates two Rectangle2D objects r1 and r2, displays their areas and perimeters, and displays the 
+result of r1.contains_point(r2.x, r2.y), r1.contains(r2), and r1.overlaps(r2). Here is a sample run:
+
+Enter x1, y1, width1, height1: 9, 1.3, 10, 35.3
+Enter x2, y2, width2, height2: 1.3, 4.3, 4, 5.3
+Area for r1 is 353.0
+Perimeter for r1 is 90.6
+Area for r2 is 21.2
+Perimeter for r2 is 18.6
+r1 contains the center of r2? False
+r1 contains r2? False
+r1 overlaps r2? False
+"""
+class Rectangle2D:
+    def __init__(self, x, y, width, height):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+
+    def __contains__(self, other):
+        diff_of_x = abs(other.x - self.x)
+        diff_of_y = abs(other.y - self.y)
+        return diff_of_x + 0.5 * other.width <= 0.5 * self.width and diff_of_y + 0.5 * other.height <= 0.5 * self.height
+
+    def __lt__(self, other):
+        return self.get_area() < other.get_area()
+
+    def __le__(self, other):
+        return self.get_area() <= other.get_area()
+
+    def __eq__(self, other):
+        return self.get_area() == other.get_area()
+
+    def __ne__(self, other):
+        return self.get_area() != other.get_area()
+
+    def __gt__(self, other):
+        return self.get_area() > other.get_area()
+
+    def __ge__(self, other):
+        return self.get_area() >= other.get_area()
+
+    def get_area(self):
+        return self.height * self.width
+
+    def get_perimeter(self):
+        return 2 * (self.height + self.width)
+
+    def contain_point(self, x, y):
+        return abs(x - self.x) <= (self.width / 2) and abs(y - self.y) <= (self.height / 2)
+
+    def overlaps(self, other):
+        return abs(other.x - self.x) < 0.5 * (self.width + other.width) and abs(other.y - self.y) < 0.5 * (self.height + other.height)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

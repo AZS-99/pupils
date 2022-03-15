@@ -1,11 +1,14 @@
 import math
+from conditionals import add_two_lists
 
 
-from loops import harder_reverse_question
-from loops import find_the_loops
+
 if __name__ == '__main__':
-    find_the_loops()
-
+        s = input("Enter max 5 integers separated by a comma: ").split(", ")
+        x = input("Enter max 5 integers separated by a comma: ").split(", ")
+        lst = [int(y) for y in s]
+        lst1 = [int(v) for v in x]
+        print(add_two_lists(lst, lst1))
 
 
 

@@ -1,8 +1,8 @@
-from advanced_fns import program
+from advanced_fns import format
 
 
 if __name__ == "__main__":
-    print(program())
+    print(format(1000, 9))
 
 
 
