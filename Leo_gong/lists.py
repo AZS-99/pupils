@@ -1,3 +1,6 @@
+import math
+import random
+
 """
 (Assign grades) Write a program that reads a list of scores and then assigns grades based on the following scheme:
 The grade is A if score is >= best – 10.
@@ -94,6 +97,86 @@ Write a programme that reads in numbers separated by a space in one line and dis
 number appears multiple times, it is displayed only once). Here is the sample run of the programme:
 
 Enter ten numbers: 1 2 3 2 1 6 3 4 5 2
-The distinct numbers are: 1 2 3 6 4 5
+The distinct numbers are: 1 2 3 6 4 5 (order is irrelevant)
 """
 def distinct_number(nums: list) -> set:
+    return set(nums)
+
+
+"""
+You can determine whether a number n is prime by checking whether 2, 3, 4, 5, 6, ..., n/2 is a divisor for n. If a 
+divisor is found, n is not prime. A more efficient approach is to check whether any of the prime numbers less than or 
+equal to √n can divide n evenly. If not, n is prime. Display the first 50 prime numbers using this approach.
+You need to use a list to store the prime numbers and later use them to check whether they are possible divisors for n.
+
+Enter a number: 25
+25 is not a prime number
+"""
+def prime_number(num):
+
+    for x in range(2, (int(math.sqrt(num)) + 1)):
+        if num % x == 0:
+            return False
+    return True
+
+
+"""
+(Count single digits) Write a program that generates 1,000 random integers between 0 and 9 and displays the count for 
+each number. (Hint: Use a list of ten integers, say counts, to store the counts for the number of 0s, 1s, ..., 9s.)
+
+Sample Run: 
+Generating a 1000 random numbers!
+The 0s repeated 99 times
+The 1s repeated 50 times
+The 2s repeated 50 times
+The 3s repeated 101 times
+The 4s repeated 135 times
+The 5s repeated 65 times
+The 6s repeated 89 times
+The 7s repeated 111 times
+The 8s repeated 100 times
+The 9s repeated 100 times
+"""
+def count_single_digits():
+    lst = []
+    for x in range(1, 1001):
+        i = random.randint(0, 9)
+        lst.append(i)
+
+    for i in range(10):
+        print("The", str(i) + "s repeated", lst.count(i), "times" )
+
+
+"""
+(Find the index of the smallest element) Write a function that returns the index of the smallest element in a list of 
+integers. If the number of such elements is greater than 1, return the smallest index. Use the following header:
+def indexOfSmallestElement(lst):
+Write a test program that prompts the user to enter a list of numbers, invokes this
+function to return the index of the smallest element, and displays the index.
+
+Sample Run:
+Enter a list of 10 numbers: 2 4 4 2 1 3 6 3 2 1
+The index of the smallest number is 4
+"""
+def indexOfSmallestElement(lst):
+    return min([i for i in range(len(lst)) if lst[i] == min(lst)])
+
+
+"""
+Write the function that reverses the list passed in the argument and returns this list. Write a test programme that 
+prompts the user to enter a list of num- bers, invokes the function to reverse the numbers, and displays the numbers.
+"""
+def reverse_lst(lst: list):
+    lst.reverse()
+    return lst
+
+
+"""
+Random number chooser) You can shuffle a list using random.shuffle(lst). Write your own function without using 
+random.shuffle(lst) to shuffle a list and return the list. Use the following function header:
+def shuffle(lst):
+Write a test program that prompts the user to enter a list of numbers, invokes the
+function to shuffle the numbers, and displays the numbers.
+"""
+def shuffle(lst):
+    pass

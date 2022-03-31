@@ -106,15 +106,13 @@ Sample Run:
 Enter max 5 integers separated by a comma: 1, 2, 3, 4
 
 Sample Output: 
-[1, 4, 9, 8]
+[1, 4, 9, 16]
 """
 def list_squares(lst):
     new_lst = []
-    new_lst.append(lst[0] ** 2)
-
-
-
-
+    for i in range(0, len(lst)):
+        new_lst.append(lst[i] ** 2)
+    return new_lst
 
 
 """
@@ -123,15 +121,17 @@ displays items from list1 in original order and items from list2 in original ord
 
 Sample Run:
 Enter max 10 integers separated by a comma: 1, 2, 3, 4
-Enter max 10 integers separated by a comma: 5, 6, 7, 8
+Enter max 10 integers separated by a comma: 12, 5, 7, 8
 
 Sample Output:
-1   5
-2   6
+1   12
+2   5
 3   7
 4   8
 """
-
+def list_one_and_two(lst1, lst2):
+    for i in range(0, len(lst2)):
+        print(lst1[i], lst2[i])
 
 
 
@@ -150,7 +150,9 @@ Sample Output:
 3   6
 4   5
 """
-
+def list_one_and_reverse_list_two(lst1, lst2):
+    for i in range(0, len(lst1)):
+        print(lst1[i], lst2[-i - 1])
 
 
 """
@@ -169,6 +171,14 @@ Sample Output:
 4   *
 5   *
 """
+def list_one_and_list_two_do_not_have_the_same_lenght_and_reverse_list_two(lst1, lst2):
+    lst2.reverse()
+    for i in range(0, len(lst1)):
+        if i < len(lst2):
+            print(lst1[i], lst2[i])
+        else:
+            print(lst1[i], "*")
+
 
 
 

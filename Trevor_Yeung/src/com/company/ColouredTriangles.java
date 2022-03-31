@@ -36,7 +36,7 @@ Sample run 2
 RBRGBRB
 G
  */
-public class Triangles {
+public class ColouredTriangles {
 
     public static String getNextLayer(String input) {
         if (input.length() == 2) {

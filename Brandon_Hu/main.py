@@ -1,6 +1,6 @@
-from advanced_fns import future_value
+from CCC_2022.J2 import gold_team
 if __name__ == '__main__':
-    future_value()
+   print(gold_team())
 
 
 

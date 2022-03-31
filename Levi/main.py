@@ -1,7 +1,6 @@
-from advanced_fns import estimatePi
+from CCC_2022.J3 import auction
 if __name__ == '__main__':
-    print(estimatePi(1))
-
+    print(auction())
 
 
 

@@ -1,8 +1,14 @@
-from advanced_fns import format
+from CCC.CCC import operation
+from CCC.CCC import operation1
+from CCC.CCC import operation2
 
 
 if __name__ == "__main__":
-    print(format(1000, 9))
+    print(operation())
+    print(operation1())
+    print(operation2())
+
+
 
 
 

@@ -1,7 +1,7 @@
 package com.company;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /*
 
@@ -36,9 +36,36 @@ The bit patterns are
 0011
  */
 
+
 public class PatternGenerator {
+
+    public static ArrayList<ArrayList<Integer>> patternGen(int n, int k) {
+        var output = new ArrayList<ArrayList<Integer>>();
+        if (k == 0) {
+            var arr = new ArrayList<>(Collections.nCopies(n, 0));
+            output.add(arr);
+            return output;
+        }
+        var less1 = patternGen(n-1, k-1);
+        for (var arr: less1) {
+            for (int i = 0; i <= arr.size(); i++) {
+                var arr1 = new ArrayList<>(arr);
+                arr1.add(i, 1);
+                if (!output.contains(arr1)) output.add(arr1);
+            }
+        }
+        return output;
+    }
     
-    public static ArrayList<ArrayList<ArrayList<Integer>>> patternGenerator(ArrayList<int[]> patterns) {
+}
+
+/*
+
+100
+010
+001
+
+public static ArrayList<ArrayList<ArrayList<Integer>>> patternGenerator(ArrayList<int[]> patterns) {
         var output = new ArrayList<ArrayList<ArrayList<Integer>>>();
         for (int[] array : patterns) {
             output.add(generator(array));
@@ -48,22 +75,36 @@ public class PatternGenerator {
 
     public static ArrayList<ArrayList<Integer>> generator(int[] constraints) {
         var initial = new ArrayList<Integer>();
+        var output = new ArrayList<ArrayList<Integer>>();
         for (int i = 0; i < constraints[1]; i++) initial.add(1);
         for (int i = 0; i < constraints[0] - constraints[1]; i++) initial.add(0);
-        return new ArrayList<>() {{add(initial);}};
+        output.add(initial);
+        var moved = true;
+        var digitCount = new HashMap<Integer, Integer>();
+        while (moved) {
+            digitCount = new HashMap<>();
+            digitCount.put(0, 0);
+            digitCount.put(1, 0);
+            moved = false;
+            var recent = output.get(output.size()-1);
+            var last1 = recent.lastIndexOf(1);
+            while (last1 == recent.size()-1 || recent.get(last1+1) == 1) {
+                if (recent.indexOf(1) == last1) return output;
+                last1 = recent.subList(0, last1).lastIndexOf(1);
+            }
+            for (int digit : recent.subList(last1, recent.size()-1)) {
+                digitCount.put(digit, digitCount.get(digit)+1);
+            }
+            recent = (ArrayList<Integer>) recent.subList(0, last1+1);
+            for (int i = 0; i<digitCount.get(1); i++) {
+                recent.add(1);
+            }
+            for (int i = 0; i<digitCount.get(0); i++) {
+                recent.add(0);
+            }
+            output.add(recent);
+        }
+        return output;
     }
-    
-}
-
-
-/*
-
-11100
-11010
-11001
-10110
-10101
-10011
-
 
  */

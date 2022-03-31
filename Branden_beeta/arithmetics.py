@@ -244,9 +244,7 @@ user entered month 3 and year 2005, the program should display that March 2005 h
 """
 def month_year(mont, yea):
     if mont == 1:
-        month ="January"
-    elif mont == 2:
-        month = "Febuary"
+        month = "January"
     elif mont == 3:
         month = "March"
     elif mont == 4:
@@ -271,5 +269,38 @@ def month_year(mont, yea):
         day = 31
     elif mont in [4, 6, 9, 11]:
         day = 30
-    elif mont == 2:
-        if
+    else:
+        month = "February"
+        remain = yea % 4
+        if remain == 0:
+            day = 29
+        else:
+            day = 28
+    return month, day
+
+
+"""
+(Financials: currency exchange) Write a program that prompts the user to enter the currency exchange rate between U.S. 
+dollars and Chinese Renminbi (RMB). Prompt the user to enter 0 to convert from U.S. dollars to Chinese RMB and 1 for 
+vice versa. Prompt the user to enter the amount in U.S. dollars or Chinese RMB to convert it to Chinese RMB or U.S. 
+dollars, respectively. Here are some sample runs:
+
+Sample Run 1:
+Enter the exchange rate from dollars to RMB: 6.81
+Enter 0 to convert dollars to RMB and 1 vice versa: 0
+Enter the dollar amount: 100
+$100.0 is 681.0 yuan
+
+
+Sample Run 2:
+Enter the exchange rate from dollars to RMB: 6.81
+Enter 0 to convert dollars to RMB and 1 vice versa: 1
+Enter the RMB amount: 10000
+10000.0 yuan is $1468.43
+"""
+def domb(d_or_rmb, money_amount, rate_dollars_rmb):
+    if d_or_rmb == 0:
+        return money_amount * rate_dollars_rmb
+    else:
+        return money_amount / rate_dollars_rmb
+
