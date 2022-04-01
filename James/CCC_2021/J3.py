@@ -42,3 +42,14 @@ The second instruction is 00907 which is decoded with the same direction as the 
 The third instruction is 34100 which is decoded as left 100 because 3 + 4 = 7 which is odd and 34 is followed by 100.
 The last line contains 99999 which tells us these are the only three instructions.
 """
+def codedformula():
+    file = open("CCC_2021/J3")
+    direction = str()
+    fileline = file.readline()
+    while fileline != "99999":
+        if (int(fileline[0]) + int(fileline[1])) % 2 == 0:
+            direction = "right"
+        elif (int(fileline[0]) + int(fileline[1])) % 2 != 0:
+            direction = "left"
+        print(direction, fileline[2] + fileline[3] + fileline[4])
+        fileline = file.readline()

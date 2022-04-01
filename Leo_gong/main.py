@@ -1,5 +1,5 @@
-from CCC_2020.J2 import infection
+from CCC_2019.J2 import send_messages
 
 if __name__ == '__main__':
 
-    print(infection())
+    send_messages()
