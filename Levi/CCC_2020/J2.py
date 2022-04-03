@@ -16,6 +16,7 @@ Sample Input 1
 750
 1
 5
+
 Output for Sample Input 1
 4
 
@@ -23,30 +24,28 @@ Explanation of Output for Sample Input 1
 The 1 person on Day 0 with the disease infects 5 people on Day 1. On Day 2, exactly 25 people are infected. On Day 3,
 exactly 125 people are infected. A total of 1 + 5 + 25 + 125 + 625 = 781 people have had the disease by the end of
 Day 4 and 781 > 750.
+
 Sample Input 2
 10
 2
 1
 
 Output for Sample Input 2
-5
+4
 
 Explanation of Output for Sample Input 2
 There are 2 people on Day 0 with the disease. On each other day, exactly 2 people are infected. By the end of Day 4,
-a total of exactly 10 people have had the disease and by the end of Day 5, more than 10 people have had the disease.
+a total of exactly 10 people have had the disease and by the end of Day 4, more than 10 people have had the disease.
 """
-def diseasemodel():
+def disease():
     file = open("CCC_2020/J2", "r")
-    p = int(file.readline())
-    n = int(file.readline())
-    r = int(file.readline())
-    day = 0
-    while n < p:
-        print(n)
-        if r != 1:
-           n = n * r ** day
-        else:
-            n += n
-        day += 1
 
-    print(day)
+    P = int(file.readline())
+    N = int(file.readline())
+    R = int(file.readline())
+    total = N
+    count = 0
+    while total < P:
+        total += total * R
+        count += 1
+    return count

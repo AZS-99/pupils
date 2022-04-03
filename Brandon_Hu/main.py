@@ -1,6 +1,6 @@
-from CCC_2022.J2 import gold_team
+from CCC_2022.J3 import tune
 if __name__ == '__main__':
-   print(gold_team())
+   print(tune())
 
 
 
