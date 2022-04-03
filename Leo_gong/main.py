@@ -1,5 +1,5 @@
-from CCC_2019.J2 import send_messages
+from CCC_2018.J3 import distance_cities
 
 if __name__ == '__main__':
 
-    send_messages()
+    distance_cities()
