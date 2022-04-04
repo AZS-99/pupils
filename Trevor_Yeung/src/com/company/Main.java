@@ -7,7 +7,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        System.out.println(Sprinter.sprinter());
+        System.out.println(GoodTriplets.goodTriplets());
 
     }
 }

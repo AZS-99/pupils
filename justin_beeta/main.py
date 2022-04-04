@@ -1,11 +1,10 @@
 
 
 
-from CCC_2015.J1 import special_day
-
+from CCC_2010.J1 import how_many_ways
 
 if __name__ == '__main__':
-       x = input("Give me a number between ")
+       how_many_ways()
 
 
 
