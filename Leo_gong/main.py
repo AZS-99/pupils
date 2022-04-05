@@ -1,5 +1,5 @@
-from CCC_2018.J3 import distance_cities
+from CCC_2016.J1 import six_games
 
 if __name__ == '__main__':
 
-    distance_cities()
+    six_games()

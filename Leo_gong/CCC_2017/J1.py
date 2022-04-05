@@ -28,3 +28,15 @@ Sample Input 2
 Output for Sample Input 2
 4
 """
+def quadrant():
+    file = open("CCC_2017/J1", "r")
+    x = int(file.readline())
+    y = int(file.readline())
+    if x > 0 and y > 0:
+        return 1
+    elif x < 0 and y > 0:
+        return 2
+    elif x < 0 and y < 0:
+        return 3
+    else:
+        return 4
