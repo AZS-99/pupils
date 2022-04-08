@@ -35,22 +35,20 @@ Notice that the top row adds up to 19, but the rightmost column adds up to 11.
 """
 def magic_square():
     file = open("CCC_2016/J2", "r")
-    a, b, c, d = [int(x) for x in (file.readline())]
-    num = a + b + c + d
-    one = two = three = four = 0
-    count = 1
-    for x in range(3):
-        a1, b1, c1, d1 = [int(x) for x in (file.readline())]
-        one += a1
-        two += b1
-        three += c1
-        four += d1
-        if (a1 + b1 + c1 + d1) == num:
-            count += 1
-    if one == two == three == four:
-        count += 3
+    col_1 = col_2 = col_3 = col_4 = 0
+    summation = 0
+    for x in range(4):
+        a, b, c, d = [int(x) for x in file.readline().split(" ")]
+        if summation == 0:
+            summation = a + b + c + d
+        else:
+            if a + b + c + d != summation:
+                return "not magic"
+        col_1 += a
+        col_2 += b
+        col_3 += c
+        col_4 += d
 
-    if count == 8
-        return
-
-
+    if col_1 == col_2 == col_3 == col_4 == summation:
+        return "magic"
+    return "not magic"

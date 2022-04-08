@@ -1,5 +1,5 @@
-from CCC_2016.J1 import six_games
+from CCC_2015.J2 import messages
 
 if __name__ == '__main__':
 
-    six_games()
+    print(messages())

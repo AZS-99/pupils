@@ -1,3 +1,3 @@
-from CCC_2022.j3 import tune
+from CCC_2021.J3 import formula
 if __name__ == '__main__':
-    tune()
+    formula()
