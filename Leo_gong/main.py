@@ -1,5 +1,5 @@
-from CCC_2015.J2 import messages
+from CCC_2014.J2 import vote
 
 if __name__ == '__main__':
 
-    print(messages())
+    print(vote())

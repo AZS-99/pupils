@@ -1,8 +1,6 @@
-from CCC_2020.J1 import barley
+from CCC_2018.J1 import phone
 if __name__ == '__main__':
-    print(barley())
-
-
+    phone()
 
 
 
