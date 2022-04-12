@@ -1,3 +1,3 @@
-from CCC_2021.J3 import formula
+from CCC_2019.J1 import basket_calculator
 if __name__ == '__main__':
-    formula()
+    basket_calculator()
