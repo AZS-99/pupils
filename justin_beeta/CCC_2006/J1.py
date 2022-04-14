@@ -56,6 +56,6 @@ def fast_food():
     side_order_options = {1: 100, 2: 57, 3: 70, 4: 0}
     drink_options = {1: 130, 2: 160, 3: 118, 4: 0}
     dessert_options = {1: 167, 2: 266, 3: 75, 4: 0}
-    pass
+
     return burger_options[burger_choice] + drink_options[drink_choice] + side_order_options[side_order_choice] + dessert_options[dessert_choice]
 

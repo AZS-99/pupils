@@ -32,3 +32,16 @@ lost. After the third round, Antonia wins, so David loses 4 points. After the fo
 5 points. In total, Antonia has lost 6 points and David has lost 9 points.
 """
 def dices():
+    file = open("CCC_2014/J3", "r")
+    rounds = int(file.readline())
+    score_a = score_d = 100
+    for i in range(rounds):
+        a, d = [int(x) for x in file.readline().split(" ")]
+        if a == d:
+            pass
+        elif a > d:
+            score_d -= a
+        else:
+            score_a -= d
+    print(score_a)
+    print(score_d)

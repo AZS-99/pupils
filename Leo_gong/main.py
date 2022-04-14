@@ -1,5 +1,5 @@
-from CCC_2014.J2 import vote
+from CCC_2012.J1 import radar
 
 if __name__ == '__main__':
 
-    print(vote())
+    radar()

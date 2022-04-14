@@ -1,11 +1,10 @@
 
 
 
-from CCC_2006.J1 import fast food
+from CCC_2001.J1 import bow_tie_on_computer
 
 if __name__ == '__main__':
-       print(middle_bear())
-
+       bow_tie_on_computer()
 
 
 
