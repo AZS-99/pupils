@@ -1,5 +1,5 @@
-from CCC_2012.J1 import radar
+from CCC_2011.J3 import sumac_sequence
 
 if __name__ == '__main__':
 
-    radar()
+    print(sumac_sequence())
