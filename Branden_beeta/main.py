@@ -1,3 +1,3 @@
-from CCC_2019.J1 import basket_calculator
+from CCC_2018.J2 import Parking_Lotter
 if __name__ == '__main__':
-    basket_calculator()
+    Parking_Lotter()
