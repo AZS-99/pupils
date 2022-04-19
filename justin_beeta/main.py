@@ -1,10 +1,9 @@
 
 
 
-from CCC_2001.J1 import bow_tie_on_computer
-
+from CCC_2022.J2 import star_players
 if __name__ == '__main__':
-       bow_tie_on_computer()
+       star_players()
 
 
 

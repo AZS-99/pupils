@@ -24,14 +24,8 @@ Sample Input
 Output for Sample Input
 3
 """
+
+
 def partitions():
     integer = int(input("Give a integer"))
-    num = integer + 1
-    count = 0
-    lst = []
-    for i in range(integer):
-        if i + (num - 1) == integer:
-            lst.append(i)
-            lst.append()
-            int(num) - 1
-            count += 1
+    return (integer // 2) + 1

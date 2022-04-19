@@ -1,5 +1,5 @@
-from CCC_2011.J3 import sumac_sequence
+from CCC_2010.J3 import computer
 
 if __name__ == '__main__':
 
-    print(sumac_sequence())
+    computer()

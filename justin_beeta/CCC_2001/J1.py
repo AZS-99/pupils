@@ -23,12 +23,27 @@ Enter height:
 ***        ***
 *****    *****
 **************
-*****    *****
-***        ***
-*            *
+
+
+
+*
+***
+*****
+*******
+*****
+***
+*
+
 """
 def bow_tie_on_computer():
-    height = int(input("Enter height: "))
-    line_one_space = height * 2 - 2
-    print("*", " " * line_one_space, "*")
-    print
+    num = int(input("Enter height:"))
+    for i in range(1, num + 1, 2):
+        num_of_asterisks = i * 2
+        num_space = num * 2 - num_of_asterisks
+        print("*" * i + " " * num_space + "*" * i)
+
+    for j in range(num - 2, 0, -2):
+        num_of_asterisks = j * 2
+        num_space = num * 2 - num_of_asterisks
+        print("*" * j + " " * num_space + "*" * j)
+
