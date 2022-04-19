@@ -42,6 +42,15 @@ The highest bid placed was 20 and it was placed by both Ijeoma and Goor. Since I
 wins the silent auction.
 """
 def bid():
-    file = open("CCC_2022/J2", 'r')
+    file = open("CCC_2021/J2", 'r')
     peoples_num = int(file.readline())
-    pass
+    max_bid = 0
+    max_bidder = str()
+
+    for i in range(peoples_num):
+        name = file.readline()
+        bid = int(file.readline())
+        if bid > max_bid:
+            max_bid = bid
+            max_bidder = name
+    print(max_bidder)

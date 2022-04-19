@@ -1,9 +1,9 @@
 
 
 
-from CCC_2022.J2 import star_players
+from CCC_2020.J2 import how_many_days
 if __name__ == '__main__':
-       star_players()
+       how_many_days()
 
 
 
