@@ -68,34 +68,36 @@ def computer():
             elif num[2] == 'B':
                 print(B)
         if num[0] == '3':
-            if num[2] == 'A' and num[2] == 'A':
-                A = int(A) + int(A)
-            elif num[2] == 'B' and num[2] == 'B':
-                B = int(B) + int(B)
-            else:
-                print(A + B)
+            if num[2] == 'A' and num[4] == 'A':
+                A = A + A
+            elif num[2] == 'B' and num[4] == 'B':
+                B = B + B
+            elif num[2] == 'A' and num[4] == 'B':
+                A = int(A) + int(B)
+            elif num[2] == 'B' and num[4] == 'A':
+                B = B + A
         if num[0] == '4':
-            if num[2] == 'A' and num[2] == 'A':
+            if num[2] == 'A' and num[4] == 'A':
                 print(A * A)
-            elif num[2] == 'B' and num[2] == 'B':
+            elif num[2] == 'B' and num[4] == 'B':
                 print(B * B)
             else:
                 print(A * B)
         if num[0] == '5':
-            if num[2] == 'A' and num[2] == 'A':
-                print(A - A)
-            if num[2] == 'B' and num[2] == 'B':
-                print(B - B)
-            if num[2] == 'B' and num[2] == 'A':
-                print(B - A)
-            if num[2] == 'A' and num[2] == 'B':
-                print(A - B)
+            if num[2] == 'A' and num[4] == 'A':
+                A = (A - A)
+            if num[2] == 'B' and num[4] == 'B':
+                B = (B - B)
+            if num[2] == 'B' and num[4] == 'A':
+                B = (B - A)
+            if num[2] == 'A' and num[4] == 'B':
+                A = (A - B)
         if num[0] == '6':
-            if num[2] == 'A' and num[2] == 'A':
-                print(A / A)
-            if num[2] == 'B' and num[2] == 'B':
-                print(B / B)
-            if num[2] == 'B' and num[2] == 'A':
-                print(B / A)
-            if num[2] == 'A' and num[2] == 'B':
-                print(A / B)
+            if num[2] == 'A' and num[4] == 'A':
+                A = (A / A)
+            if num[2] == 'B' and num[4] == 'B':
+                B = (B / B)
+            if num[2] == 'B' and num[4] == 'A':
+                B = (B / A)
+            if num[2] == 'A' and num[4] == 'B':
+                A = (A / B)

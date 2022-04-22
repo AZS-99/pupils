@@ -1,5 +1,3 @@
-from CCC_2010.J3 import computer
-
+from CCC_2009.J3 import mobile_cell_service
 if __name__ == '__main__':
-
-    computer()
+    mobile_cell_service()

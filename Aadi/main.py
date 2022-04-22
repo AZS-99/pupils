@@ -1,8 +1,4 @@
-import math
-from loops import cubes
+from loops import sigma
 
 if __name__ == '__main__':
-
-    a = int(input("please enter value:"))
-
-    cubes(a)
+   print(sigma())
