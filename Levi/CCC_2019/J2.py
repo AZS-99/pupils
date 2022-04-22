@@ -28,7 +28,7 @@ AAAAAAAAAAAA
 XX
 """
 def message():
-    file = open("CCC_2019/J2", "r")
+    file = open("CCC_2019/J1", "r")
     lines = file.readline()
     lines = int(lines)
     a = ""

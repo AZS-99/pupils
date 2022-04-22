@@ -37,3 +37,7 @@ def mobile_cell_service():
     victoria = ottawa - 300
     edmonton = ottawa - 200
     winnipeg = ottawa - 100
+    toronto = ottawa
+    halifax = ottawa + 100
+    st_john = ottawa + 130
+

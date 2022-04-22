@@ -21,8 +21,8 @@ The input consists of three lines. The first line contains a followed by b, indi
 The second line contains c followed by d, indicating the destination coordinate (c, d) (−1000 ≤ c ≤ 1000; −1000 ≤ d ≤ 1000).
 The third line contains an integer t (0 ≤ t ≤ 10 000) indicating the initial number of units of electrical charge
 of your battery.
-For 3 of the 15 available marks, 0 ≤ a,b,c,d ≤ 2. For an additional 3 of the 15 marks available, t ≤ 8.
 
+For 3 of the 15 available marks, 0 ≤ a,b,c,d ≤ 2. For an additional 3 of the 15 marks available, t ≤ 8.
 Output Specification
 Output Y if it is possible to move from the starting coordinate to the destination coordinate using exactly t units
 of electrical charge. Otherwise output N.
@@ -41,7 +41,6 @@ Sample Input 2
 10 2
 10 4
 5
-
 Output for Sample Input 2
 N
 
@@ -53,13 +52,18 @@ It is also possible to travel using 5 units of electricity from (10, 2) to (11, 
 sequence:
 It is not possible to move via any path of length 5 from (10, 2) to (10, 4), however.
 """
-def electric_car():
+def streets():
     file = open("CCC_2017/J3", "r")
-    x1, y1 = [int(x) for x in (file.readline().split(" "))]
-    x2, y2 = [int(x) for x in (file.readline().split(" "))]
-    battery_points = int(file.readline())
-    distance = abs(x1 - x2) + abs(y1 - y2)
-    if distance % 2 == battery_points % 2 and battery_points >= distance:
-        print("Y")
+    origin_x, origin_y = [int(x) for x in file.readline().split()]
+    destination_x, destination_y = [int(x) for x in file.readline().split()]
+    minimum_distance = abs(origin_x - destination_x) + abs(origin_y - destination_y)
+    gas = int(file.readline())
+    if gas >= minimum_distance and minimum_distance % 2 == 0 and gas % 2 == 0:
+        return 'Y'
+    elif gas >= minimum_distance and minimum_distance % 2 != 0 and gas % 2 != 0:
+        return 'Y'
     else:
-        print("N")
+        return "N"
+
+
+

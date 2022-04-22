@@ -38,7 +38,7 @@ There are 2 people on Day 0 with the disease. On each other day, exactly 2 peopl
 a total of exactly 10 people have had the disease and by the end of Day 4, more than 10 people have had the disease.
 """
 def disease():
-    file = open("CCC_2020/J2", "r")
+    file = open("CCC_2020/J1", "r")
 
     P = int(file.readline())
     N = int(file.readline())

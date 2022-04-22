@@ -48,7 +48,7 @@ team is not considered a gold team.
 """
 def points():
     count = 0
-    file = open("CCC_2022/J2", "r")
+    file = open("CCC_2022/J1", "r")
     players = int(file.readline())
     for i in range(players):
         score = int(file.readline())

@@ -1,6 +1,6 @@
-from CCC_2018.J1 import phone
+from CCC_2017.J3 import streets
 if __name__ == '__main__':
-    phone()
+    print(streets())
 
 
 
