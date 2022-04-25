@@ -12,15 +12,14 @@ At some point, the contestant will stop opening briefcases, and a “Banker” w
 for what might be contained in his/her chosen briefcase. Then the contestant is asked: “Deal or No Deal?”.
 
 
-Write a program that helps a player decide if he/she should choose “deal” or “no deal”, by calcu- lating the average of
+Write a program that helps a player decide if he/she should choose “deal” or “no deal”, by calculating the average of
 the remaining amounts (i.e., all unopened briefcases, including his/her “own” briefcase), and comparing that value to
 the “Banker’s” offer. If the offer is higher than the average, then the player should ”deal” otherwise, the player
 should say “no deal”.
 
 
 Input Specification:
-
-The User must input a number n where 1 < n < 10, which indicates how many cases have been opened integers between 1 and
+The User must input a number n where 1 ≤ n < 10, which indicates how many cases have been opened integers between 1 and
 10 representing the values in the game that have been eliminated, followed by the “Banker’s” offer. For example:
 3 2 5 10 300 indicates that briefcases containing $500, $10 000, and $1 000 000 have been eliminated and the Banker’s
 offer is $300. You may assume that no duplicate case numbers are entered for the eliminated values, and you may assume
@@ -32,7 +31,8 @@ The program will print out one of two statements: “deal” or “no deal”.
 Sample Input 1
 2
 3
-8 198000
+8
+198000
 Output for Sample Input 1
 no deal
 
@@ -52,3 +52,4 @@ Sample Input 2
 Output for Sample Input 2
 deal
 """
+def
