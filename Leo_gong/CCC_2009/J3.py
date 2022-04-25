@@ -41,3 +41,31 @@ def mobile_cell_service():
     halifax = ottawa + 100
     st_john = ottawa + 130
 
+    print(ottawa, "in Ottawa")
+
+    if victoria < 0:
+        print(2400 - abs(victoria), "in Victoria")
+    else:
+        print(victoria, "in Victoria")
+
+    if edmonton < 0:
+        print(2400 - abs(edmonton), "in Edmonton")
+    else:
+        print(edmonton, "in Edmonton")
+
+    if winnipeg < 0:
+        print(winnipeg, "in Winnipeg")
+    else:
+        print(winnipeg, "in Winnipeg")
+
+    print(toronto, "in Toronto")
+
+    if halifax > 2400:
+        print(halifax - 2400, "in Halifax")
+    else:
+        print(halifax, "in Halifax")
+
+    if st_john > 2400:
+        print(st_john - 2400, "in St. John's")
+    else:
+        print(st_john, "in St. John's")

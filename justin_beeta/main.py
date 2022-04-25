@@ -1,9 +1,10 @@
 
 
 
-from CCC_2020.J2 import how_many_days
+from CCC_2016.J2 import magic_square
+
 if __name__ == '__main__':
-       how_many_days()
+       print(magic_square())
 
 
 

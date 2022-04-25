@@ -1,3 +1,3 @@
-from CCC_2009.J3 import mobile_cell_service
+from CCC_2007.J2 import translation
 if __name__ == '__main__':
-    mobile_cell_service()
+    translation()
