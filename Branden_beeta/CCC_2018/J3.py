@@ -31,3 +31,12 @@ The first line of output contains:
 • 25, since the distance between city1 and city4 is 3+10+12=25;
 • 30, since the distance between city1 and city5 is 3+10+12+5=30.
 """
+def distance():
+    file = open("CCC_2018/J3", "r")
+    distance1, distance2, distance3, distance4 = [int(x) for x in file.readline().split(" ")]
+    lst = [0, distance1, distance1 + distance2, distance1 + distance2 + distance3, distance1 + distance2 + distance3 + distance4]
+
+    for i in range(5):
+        for x in range(5):
+            print(abs(lst[i] - lst[x]), end=" ")
+        print()

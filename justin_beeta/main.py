@@ -1,10 +1,10 @@
 
 
 
-from CCC_2016.J2 import magic_square
+from CCC_2011.J2 import balloon
 
 if __name__ == '__main__':
-       print(magic_square())
+       print(balloon())
 
 
 
