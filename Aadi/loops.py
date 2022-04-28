@@ -46,11 +46,52 @@ def addition():
 """
 Write a programme that prompts the user to enter an integer n, then displays the result of 1 + 2 + 3 + ... + n
 """
-def sigma():
-    n = int(input("Please enter a number:"))
+
+
+
+"""
+Write a programme that prompts the user to enter an integer n, the displays the result of 1^2 + 2^2 + 3^2 + ... + n^2
+"""
+def powers():
+    n = int(input("PLease input a number:"))
     total = 0
-    for number in range(1,n+1):
-        total = total + number
+    for number in range(1, n + 1):
+        total = total + number ** 2
     return total
+
+
+"""
+Assume python doesn't have the "to the power of" feature, that is, the double asterisk used for that purpose. Create a
+function named "power" that takes two arguments, the base and the exponent, and returns the result. 
+"""
+def power(base, exponent):
+    total = 1
+    for i in range(exponent):
+        total = total * base
+    return total
+
+
+"""
+Write a function that takes an integer n as an argument, and returns its factorial.
+"""
+def factorial(n):
+    total = 1
+    for i in range(2, n+1):
+        total = total * i
+    return total
+
+
+"""
+Write a function that takes an integer n as an argument, and returns its units digit.
+"""
+def get_units_digit(n):
+    return n % 10
+
+
+"""
+Write a function that takes an integer n as an argument, and returns the number of digits of that number
+"""
+
+
 
 
