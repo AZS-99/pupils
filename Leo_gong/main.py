@@ -1,3 +1,3 @@
-from CCC_2007.J2 import translation
+from CCC_2006.J2 import dices
 if __name__ == '__main__':
-    translation()
+    print(dices())

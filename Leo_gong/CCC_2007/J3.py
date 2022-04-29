@@ -2,10 +2,11 @@
 Problem J3: Deal or No Deal Calc􏰂ulator 􏰂 􏰂 􏰂
 Problem Description
 “Deal or No Deal” (TM) is a game show on NBC. (You can play it at http://www.nbc.com/Deal_or_No_Deal/game/flash.shtml)
-In the CCC version of the game, there are 10 possible dollar amounts: $100, $500, $1 000, $5 000, $10 000, $25 000,
+In the CCC version of the game, there are 10 possible dollar amounts: $100, $500, $1000, $5000, $10 000, $25000,
 $50 000, $100 000, $500 000, $1 000 000 sealed in imaginary briefcases.
-These dollar amounts are numbered 1 – 10 (i.e. 1
-000 000). Before the game starts the contestant will have chosen one of the briefcases as his/hers to possibly keep.
+These dollar amounts are numbered 1 – 10 (i.e. 1000 000). Before the game starts the contestant will have chosen one of
+the briefcases as his/hers to possibly keep.
+
 During the game, some of the ten possible dollar amounts have been eliminated from the game because the contestant has
 selected some of the other briefcases and revealed the amounts inside.
 At some point, the contestant will stop opening briefcases, and a “Banker” will offer the contestant cash in exchange
@@ -52,4 +53,16 @@ Sample Input 2
 Output for Sample Input 2
 deal
 """
-def
+def deal_nodeal():
+    file = open("CCC_2007/J3", "r")
+    dic = {1: 100, 2: 500, 3: 1000, 4: 5000, 5: 10000, 6: 25000, 7: 50000, 8: 100000, 9: 500000, 10: 1000000}
+    total = 100 + 500 + 1000 + 5000 + 10000 + 25000 + 50000 + 100000 + 500000 + 1000000
+
+    num = eval(file.readline())
+    for i in range(num):
+        num2 = int(file.readline())
+        total -= dic[num2]
+
+    total = total / num
+    money = int(file.readline())
+    print("deal" if money > total else "no deal")
