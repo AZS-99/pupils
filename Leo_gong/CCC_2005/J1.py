@@ -3,10 +3,10 @@ def cell_sell():
     evening = int(input("Number of evening minutes?"))
     weekend = int(input("Number of weekend minutes?"))
 
-    if daytime_a > 0:
-        int(daytime_a) * 25
-    if daytime_b > 0:
-        int(daytime_b) * 45
+    # if daytime_a > 0:
+    #     int(daytime_a) * 25
+    # if daytime_b > 0:
+    #     int(daytime_b) * 45
 
     evening_weekend_cost_a = evening * 15 + weekend * 20
     evening_weekend_cost_b = evening * 35 + weekend * 25
