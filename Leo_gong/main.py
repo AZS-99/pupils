@@ -1,3 +1,3 @@
-from CCC_2006.J2 import dices
+from CCC_2005.J2 import protected_numbers
 if __name__ == '__main__':
-    print(dices())
+    protected_numbers()

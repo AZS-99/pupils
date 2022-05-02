@@ -1,13 +1,14 @@
 package com.company;
 
-import java.util.Arrays;
-import java.util.ArrayList;
+import java.util.Scanner;
+import java.io.File;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        System.out.println(Ragaman.ragaman());
+        RoboGrid rg = new RoboGrid();
+        System.out.println(rg.robogrid());
 
     }
 }

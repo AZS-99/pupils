@@ -84,30 +84,103 @@ import java.io.File;
 
 public class RoboGrid {
 
-    public static ArrayList<ArrayList<Integer>> getCamVision(ArrayList<ArrayList<Integer>> cameras, ArrayList<ArrayList<String>> map) {
+    int height;
+    int width;
+
+    ArrayList<ArrayList<String>> array_2d;
+    ArrayList<ArrayList<Boolean>> traveled;
+    ArrayList<ArrayList<Integer>> cameras;
+    ArrayList<ArrayList<Integer>> camVision;
+    ArrayList<ArrayList<Integer>> paths;
+    Scanner s;
+    int [] start;
+
+    public RoboGrid() throws FileNotFoundException {
+        s = new Scanner(new File("RoboGrid"));
+        this.height = s.nextInt();
+        this.width = s.nextInt();
+        array_2d = new ArrayList<>();
+        traveled = new ArrayList<>();
+        cameras = new ArrayList<>();
+        camVision = new ArrayList<>();
+        paths = new ArrayList<>();
+        start = new int[2];
+    }
+
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        for (ArrayList<String> arr : array_2d) {
+            for (String s : arr) {
+                str.append(s);
+            }
+            str.append("\n");
+        }
+        return str.toString();
+    }
+
+    public ArrayList<ArrayList<Integer>> getNeighbours(int x, int y) {
+        if (array_2d.get(x).get(y).equals("W")) return new ArrayList<>();
+        var neighbours = new ArrayList<ArrayList<Integer>>();
+        if (x > 0 && (array_2d.get(x - 1).get(y).equals(".") || array_2d.get(x - 1).get(y).equals("D") || array_2d.get(x - 1).get(y).equals("S")))
+            neighbours.add(new ArrayList<>(Arrays.asList(x-1, y)));
+        if (x < array_2d.size()-1 && (array_2d.get(x + 1).get(y).equals(".") || array_2d.get(x + 1).get(y).equals("U") || array_2d.get(x + 1).get(y).equals("S")))
+            neighbours.add(new ArrayList<>(Arrays.asList(x+1, y)));
+        if (y > 0 && (array_2d.get(x).get(y-1).equals(".") || array_2d.get(x).get(y-1).equals("R") || array_2d.get(x).get(y-1).equals("S")))
+            neighbours.add(new ArrayList<>(Arrays.asList(x, y-1)));
+        if (y < width-1 && (array_2d.get(x).get(y+1).equals(".") || array_2d.get(x).get(y+1).equals("L") || array_2d.get(x).get(y+1).equals("S")))
+            neighbours.add(new ArrayList<>(Arrays.asList(x, y+1)));
+        return neighbours;
+    }
+
+    public Double count(int x, int y) {
+        if (start[0] == x && start[1] == y) return 0.0;
+        if (array_2d.get(x).get(y).equals("W")) return Double.POSITIVE_INFINITY;
+        var neighbours = getNeighbours(x, y);
+        var is_dot = array_2d.get(x).get(y).equals(".");
+        if (is_dot) array_2d.get(x).set(y, "M");
+        var min_count = Double.POSITIVE_INFINITY;
+        for (ArrayList<Integer> n : neighbours) {
+            if (array_2d.get(x).get(y).equals("M")) min_count += 1;
+            double c = count(n.get(0), n.get(1));
+            if (is_dot) c++;
+            if (c < min_count) min_count = c;
+        }
+        if (is_dot) array_2d.get(x).set(y, ".");
+        return min_count;
+    }
+
+    public ArrayList<ArrayList<Integer>> getCamVision(ArrayList<ArrayList<Integer>> cameras, ArrayList<ArrayList<String>> map) {
         var camVision = new ArrayList<ArrayList<Integer>>();
         for (ArrayList<Integer> cam : cameras) {
             camVision.add(cam);
             int i = cam.get(0)+1;
             int j = cam.get(1);
             while (!map.get(i).get(j).equals("W")) {
-                camVision.add(new ArrayList<>(Arrays.asList(i, j)));
+                if (map.get(i).get(j).equals(".")) {
+                    camVision.add(new ArrayList<>(Arrays.asList(i, j)));
+                }
                 i++;
             }
             i = cam.get(0)-1;
             while (!map.get(i).get(j).equals("W")) {
-                camVision.add(new ArrayList<>(Arrays.asList(i, j)));
+                if (map.get(i).get(j).equals(".")) {
+                    camVision.add(new ArrayList<>(Arrays.asList(i, j)));
+                }
                 i--;
             }
             i = cam.get(0);
             j = cam.get(1)+1;
             while (!map.get(i).get(j).equals("W")) {
-                camVision.add(new ArrayList<>(Arrays.asList(i, j)));
+                if (map.get(i).get(j).equals(".")) {
+                    camVision.add(new ArrayList<>(Arrays.asList(i, j)));
+                }
                 j++;
             }
             j = cam.get(1)-1;
             while (!map.get(i).get(j).equals("W")) {
-                camVision.add(new ArrayList<>(Arrays.asList(i, j)));
+                if (map.get(i).get(j).equals(".")) {
+                    camVision.add(new ArrayList<>(Arrays.asList(i, j)));
+                }
                 j--;
             }
         }
@@ -119,22 +192,21 @@ public class RoboGrid {
         return camVision;
     }
 
-    public static void main(String[] args) throws FileNotFoundException {
-        Scanner s  = new Scanner(new File("RoboGrid"));
-        int height = s.nextInt();
-        int width = s.nextInt();
-        var array_2d = new ArrayList<ArrayList<String>>();
-        var traveled = new ArrayList<ArrayList<Boolean>>();
-        var cameras = new ArrayList<ArrayList<Integer>>();
-        ArrayList<ArrayList<Integer>> camVision;
-        var paths = new ArrayList<ArrayList<Integer>>();
+    public ArrayList<Integer> robogrid() {
         s.nextLine();
         for (int i = 0; i < height; i++) {
             var str = s.nextLine();
+
             ArrayList<String> myList = new ArrayList<>(Arrays.asList(str.split("")));
             for (int j = 0; j < myList.size(); j++) {
-                if (myList.get(j).equals("*")) paths.add(new ArrayList<>(Arrays.asList(i, j)));
-                if (myList.get(j).equals("C")) cameras.add(new ArrayList<>(Arrays.asList(i, j)));
+                switch (myList.get(j)) {
+                    case "." -> paths.add(new ArrayList<>(Arrays.asList(i, j)));
+                    case "C" -> cameras.add(new ArrayList<>(Arrays.asList(i, j)));
+                    case "S" -> {
+                        start[0] = i;
+                        start[1] = j;
+                    }
+                }
             }
             array_2d.add(myList);
         }
@@ -142,9 +214,20 @@ public class RoboGrid {
         camVision = getCamVision(cameras, array_2d);
 
         for (ArrayList<Integer> point : camVision) {
-            if (paths.contains(point)) array_2d.set(point.get(0))
+            var arr = array_2d.get(point.get(0));
+            arr.set(point.get(1), "W");
+            array_2d.set(point.get(0), arr);
         }
 
+        var output = new ArrayList<Integer>();
+
+        for (ArrayList<Integer> arr : paths) {
+            double d = count(arr.get(0), arr.get(1));
+            if (d == Double.POSITIVE_INFINITY) d = -1;
+            output.add((int) d);
+        }
+
+        return output;
     }
 
 }
