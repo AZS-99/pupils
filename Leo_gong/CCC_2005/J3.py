@@ -41,5 +41,15 @@ Turn RIGHT into your HOME.
 """
 def returning_home():
     file = open("CCC_2005/J3", "r")
-    while file.readline() != 'SCHOOL':
+    lst = []
+    line = str()
+    while line != 'SCHOOL':
+        line = file.readline()
+        lst.append(line[:-1])
 
+    lst.reverse()
+    lst.pop(0)
+    for i in range(0, len(lst) - 1, 2):
+        print("Turn", "Left" if lst[i] == 'R' else "Right", "onto", str(lst[i + 1]), "street")
+
+    print("Turn RIGHT into your HOME." if lst[-1] == 'L' else "Turn LEFT into your HOME.")

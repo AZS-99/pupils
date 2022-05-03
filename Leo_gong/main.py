@@ -1,3 +1,3 @@
-from CCC_2005.J2 import protected_numbers
+from CCC_2004.J3 import simile
 if __name__ == '__main__':
-    protected_numbers()
+    simile()
