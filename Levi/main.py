@@ -1,6 +1,6 @@
-from CCC_2013.J1 import ages
+from CCC_2012.J3 import scaling
 if __name__ == '__main__':
-    print(ages())
+    scaling()
 
 
 

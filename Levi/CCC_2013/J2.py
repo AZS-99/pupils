@@ -26,4 +26,10 @@ def upsidedown():
     file = open("CCC_2013/J2", "r")
     word = file.readline()
     letters = ["I", "O", "S", "H", "Z", "X", "N"]
+    #for-each loop
+    for letter in word:
+        if letter not in letters:
+            return "NO"
+    return "YES"
+
 

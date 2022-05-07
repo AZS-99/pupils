@@ -28,5 +28,4 @@ def canada_usa():
     print("Enter words to be translated")
     while word != "quit!":
         word = input()
-        word = word[-1]
-        if
+        # if word[-1] == r and word
