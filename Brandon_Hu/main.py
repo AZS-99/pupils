@@ -1,6 +1,6 @@
-from CCC_2020.J1 import dog_treats
+from CCC_2016.J1 import Tournament
 if __name__ == '__main__':
-  dog_treats()
+  Tournament()
 
 
 

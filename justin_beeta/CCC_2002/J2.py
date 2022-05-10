@@ -1,17 +1,17 @@
 """
 Americans spell differently from Canadians. Americans write "neighbor" and "color" while Canadians write "neighbour" and
 "colour”.
+
 Write a program to help Americans translate to Canadian.
 Your program should interact with the user in the following way. The user should type a word (not to exceed 64 letters)
 and if the word appears to use American spelling, the program should echo the Canadian spelling for the same word. If
 the word does not appear to use American spelling, it should be output without change. When the user types "quit!" the
 program should terminate.
+
 The rules for detecting American spelling are quite naive: If the word has more than four letters and has a suffix
 consisting of a consonant followed by "or", you may assume it is an American spelling, and that the equivalent Canadian
 spelling replaces the "or" by "our". Note : you should treat the letter "y" as a vowel.
-
 Keyboard input and screen output is expected.
-
 
 Sample session. User input in italics.
 Enter words to be translated:
@@ -23,12 +23,16 @@ taylor
 taylour
 quit!
 """
-def canada_usa():
-    word = str()
-    print("Enter words to be translated")
-    while word != "quit!":
-        word = input()
-        if word[-2:] == 'or' and len(word) >= 4:
-            print(word[0:-2] + "our")
-        else:
+def translated_A_C():
+    american_word = str()
+    while True:
+        american_word = input("Enter words to be translated: ")
+        if american_word == "quit!":
+            return
+        if len(american_word) > 4 and american_word[-2:] == "or":
+            word = american_word[:-1] + 'u' + american_word[-1:]
             print(word)
+        else:
+            print(american_word)
+
+

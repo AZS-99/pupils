@@ -1,3 +1,4 @@
+
 import math
 
 """
@@ -283,8 +284,13 @@ def summation():
 """
 You can approximate e by using the following series
 e = 1 + 1/1! + 1/2! + 1/3! + ... + 1/i!
-Write a program that displays the e value for i = 10000, 20000, . . ., and 100000.
+Write a program that displays the e value for i = 1000
 """
+def e_question():
+    total = 1
+    for i in range(1, 1000):
+        total += 1/factorial(i)
+    return total
 
 
 

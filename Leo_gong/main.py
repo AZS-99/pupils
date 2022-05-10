@@ -1,3 +1,3 @@
-from CCC_2002.J1 import nine_numbers
+from CCC_2001.J3 import card_game
 if __name__ == '__main__':
-    nine_numbers()
+    card_game()

@@ -1,12 +1,10 @@
 
 
 
-from CCC_2007.J2 import short_form
+from loops import e_question
 
 if __name__ == '__main__':
-       print(short_form())
-
-
+       print(e_question())
 
 
 
