@@ -1,4 +1,4 @@
-from modulous import leap_years
+from loops import print_loops
 
 if __name__ == '__main__':
-   leap_years()
+   (print_loops())

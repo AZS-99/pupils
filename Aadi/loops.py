@@ -99,6 +99,81 @@ def count_digits(n):
     return total
 
 
+"""
+Print the following pattern using loops:
+1 
+1 2 
+1 2 3 
+1 2 3 4 
+1 2 3 4 5
+"""
+def patterns():
+    for j in range(2, 7):
+
+        for i in range(1, j):
+            print(i)
 
 
+"""
+Write a program to use for loop to print the following reverse number pattern
+5 4 3 2 1 
+4 3 2 1 
+3 2 1 
+2 1 
+1
+"""
+def pattern():
+    for j in range (5, 0, -1):
+        for i in range(j, 0, -1):
+            print(i, end=" ")
+        print()
+
+
+"""
+Write a program to use for loop to print the following reverse number pattern
+1
+1 2
+1 2 3
+1 2 3 4
+1 2 3 4 5
+1 2 3 4
+1 2 3
+1 2
+1
+"""
+def reverse_patterns():
+    for j in range(2, 7):
+        for i in range(1, j):
+            print(i, end=" ")
+        print()
+
+    for j in range(4,0, -1):
+        for i in range(j, 0, -1):
+            print(i, end=" ")
+        print()
+
+"""
+Find the loop the prints the following pattern:
+1 2 3 4 5 6 7 8 9 10
+2 3 4 5 6 7 8 9 10 11
+3 4 5 6 7 8 9 10 11 12
+4 5 6 7 8 9 10 11 12 13
+5 6 7 8 9 10 11 12 13 14
+"""
+def print_loops():
+    for i in range (1, 11):
+        print(i, end=" ")
+    print()
+    for i in range ( 2, 12):
+        print(i, end=" ")
+    print()
+    for i in range (3, 13):
+        print(i, end=" ")
+    print()
+    for i in range (4, 14):
+        print(i, end=" ")
+    print()
+    for i in range (5, 15):
+        print(i, end=" ")
+    print()
 

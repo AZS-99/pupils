@@ -65,3 +65,7 @@ Sample output
 def prime_numbers():
     integer = int(input("Please enter an integer:"))
     prime = int(input("Please enter prime number"))
+    if integer % prime == 0:
+        return prime, True
+    else:
+        return prime, False
