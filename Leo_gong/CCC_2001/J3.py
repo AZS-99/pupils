@@ -60,38 +60,40 @@ def card_game():
     if c_count in num_dic.keys():
         c += num_dic[c_count]
 
-    for i in range(len(diamonds)):
-        ch = clubs[i]
+    for ch in diamonds:
         if ch in dic.keys():
             d += dic[ch]
 
-    d_count = len(hearts)
-    if d_count - 1 in num_dic.keys():
+    d_count = len(diamonds)
+    if d_count in num_dic.keys():
         d += num_dic[d_count]
 
-    for i in range(len(clubs)):
-        ch = clubs[i]
+    for ch in hearts:
         if ch in dic.keys():
             h += dic[ch]
 
-    h_count = len(clubs)
-    if h_count - 1 in num_dic.keys():
+    h_count = len(hearts)
+    if h_count in num_dic.keys():
         h += num_dic[h_count]
 
-    for i in range(len(clubs)):
-        ch = clubs[i]
+
+
+    for ch in spades:
         if ch in dic.keys():
             s += dic[ch]
 
-    s_count = len(clubs)
-    if s_count - 1 in num_dic.keys():
+    s_count = len(spades)
+    if s_count in num_dic.keys():
         s += num_dic[s_count]
 
 
+    print("Cards Dealt", "{:>38}".format("points"))
+    print("{:<10}{:<15}{:>20}".format("Clubs", "".join([str(x) + " " for x in (cards[index_c + 1:index_d])]), c))
+    print("{:<10}{:<15}{:>20}".format("Diamonds", "".join([str(x) + " " for x in (cards[index_d + 1:index_h])]), d))
+    print("{:<10}{:<15}{:>20}".format("Hearts", "".join([str(x) + " " for x in (cards[index_h + 1:index_s])]), h))
+    print("{:<10}{:<15}{:>20}".format("Spades", "".join([str(x) + " " for x in (cards[index_s + 1:])]), s))
+    print("Total", "{:>40}".format(c + d + h + s))
 
-
-    print(clubs, c)
-    print()
 
 
 
