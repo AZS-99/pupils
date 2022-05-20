@@ -10,6 +10,7 @@ public class RoboGraph {
 
     ArrayList<ArrayList<RoboNode>> graph;
     ArrayList<RoboNode> queue;
+    int tmp = 0;
 
     public RoboGraph() throws FileNotFoundException {
         Scanner sc = new Scanner(new File("RoboGrid"));
@@ -77,17 +78,91 @@ public class RoboGraph {
                 }
             }
         }
-
+        dijkstra(queue);
     }
 
-    public void dijkstra() {
-
+    public String toString() {
+        StringBuilder output = new StringBuilder();
+        for (var arr : graph) {
+            for (var node : arr) {
+                if (node.val.isInfinite()){
+                    output.append("X ");
+                } else {
+                    output.append(node.val.intValue()).append(" ");
+                }
+            }
+            output.append("\n");
+        }
+        return output.toString();
     }
 
-    public ArrayList<ArrayList<RoboNode>> getDistances() {
-        queue = new ArrayList<>();
-        dijkstra();
-        return graph;
+    public void dijkstra(ArrayList<RoboNode> queue) {
+        if (queue.size() < 1) return;
+        boolean allVisited = true;
+        for (var node : queue) {
+            if (!node.visited) {
+                allVisited = false;
+                break;
+            }
+            else {
+                tmp++;
+            }
+        }
+        if (allVisited) return;
+
+
+        RoboNode minValNode = new RoboNode('W');
+        int index = 0;
+        for (var i = 0; i < queue.size(); i++) {
+            var node = queue.get(i);
+            if (node.val < minValNode.val) {
+                minValNode = node;
+                index = i;
+            }
+        }
+
+        System.out.println(this);
+        System.out.println();
+
+        queue.get(index).visited = true;
+
+        if (minValNode.up != null && !minValNode.up.visited) {
+            if (minValNode.up.type == '.') {
+                if (minValNode.up.val > minValNode.val) minValNode.up.val = minValNode.val + 1;
+            } else {
+                if (minValNode.up.val > minValNode.val) minValNode.up.val = minValNode.val;
+            }
+            queue.add(minValNode.up);
+        }
+        if (minValNode.right != null && !minValNode.right.visited) {
+            if (minValNode.right.type == '.') {
+                if (minValNode.right.val > minValNode.val) minValNode.right.val = minValNode.val + 1;
+            } else {
+                if (minValNode.right.val > minValNode.val) minValNode.right.val = minValNode.val;
+            }
+            queue.add(minValNode.right);
+        }
+        if (minValNode.down != null && !minValNode.down.visited) {
+            if (minValNode.down.type == '.') {
+                if (minValNode.down.val > minValNode.val) minValNode.down.val = minValNode.val + 1;
+            } else {
+                if (minValNode.down.val > minValNode.val) minValNode.down.val = minValNode.val;
+            }
+            queue.add(minValNode.down);
+        }
+        if (minValNode.left != null && !minValNode.left.visited) {
+
+            if (minValNode.left.type == '.') {
+                if (minValNode.left.val > minValNode.val) minValNode.left.val = minValNode.val + 1;
+            } else {
+                if (minValNode.left.val > minValNode.val) minValNode.left.val = minValNode.val;
+            }
+            queue.add(minValNode.left);
+        }
+        var node = queue.remove(index);
+        System.out.println(tmp);
+
+        dijkstra(queue);
     }
 
 }

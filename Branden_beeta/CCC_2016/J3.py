@@ -44,6 +44,11 @@ def palindrome(string):
 def longest_palindrome():
     file = open("CCC_2016/J3", "r")
     string = file.readline()
-    if palindrome(string):
-        pass
+    longest_palindrome_length = 0
+    for i in range(len(string) - 1):
+        for j in range(len(string), i, -1):
+            if palindrome(string[i:j]) and len(string[i:j]) > longest_palindrome_length:
+                print(string[i:j])
+                longest_palindrome_length = len(string[i:j])
+    print(longest_palindrome_length)
 

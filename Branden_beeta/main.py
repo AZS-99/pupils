@@ -1,3 +1,3 @@
-from CCC_2016.J2 import magic_square
+from CCC_2015.J2 import test_smiley
 if __name__ == '__main__':
-    magic_square()
+    test_smiley()

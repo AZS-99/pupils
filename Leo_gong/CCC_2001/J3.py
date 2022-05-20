@@ -40,25 +40,24 @@ def card_game():
     cards = input("Enter cards:")
     cards_lst = [x for x in cards]
     c = d = h = s = 0
-    dic = {"A":4, "K":3, "Q":2, "J":1}
-    num_dic = {0:3, 1:2, 2:1}
+    dic = {"A": 4, "K": 3, "Q":2, "J": 1}
+    num_dic = {0: 3, 1: 2, 2: 1}
     index_c = cards.find("C")
     index_d = cards.find("D")
     index_h = cards.find("H")
     index_s = cards.find("S")
 
-    clubs = cards[:index_d]
-    diamonds = cards[index_d:index_h]
-    hearts = cards[index_h:index_s]
-    spades = cards[index_s:]
+    clubs = cards[1:index_d]
+    diamonds = cards[index_d+1:index_h]
+    hearts = cards[index_h+1:index_s]
+    spades = cards[index_s+1:]
 
-    for i in range(len(clubs)):
-        ch = clubs[i]
+    for ch in clubs:
         if ch in dic.keys():
             c += dic[ch]
 
     c_count = len(clubs)
-    if c_count - 1 in num_dic.keys():
+    if c_count in num_dic.keys():
         c += num_dic[c_count]
 
     for i in range(len(diamonds)):
@@ -99,12 +98,3 @@ def card_game():
 
 
 
-    score_c = socre_d = score_h = score_s = 0
-
-    #index_Ace = cards.find("A")
-    #index_king = cards.find("K")
-    #index_queen = cards.find("Q")
-    #index_jack = cards.find("J")
-    #if index_c < index_Ace < index_d:
-    #    socre_
-    #print(cards[index_c + 1:index_d])

@@ -18,16 +18,7 @@ public class RoboNode {
     }
 
     public String toString() {
-        var str = "";
-        if (left != null)
-            str += "←";
-        if (down != null)
-            str += "↓";
-        if (up != null)
-            str += "⬆";
-        if (right != null)
-            str += "→";
-        return str;
+        return val.toString();
     }
 
 }

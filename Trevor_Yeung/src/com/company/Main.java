@@ -9,5 +9,7 @@ public class Main {
 
         var rg = new RoboGraph();
 
+        System.out.println(rg);
+
     }
 }
