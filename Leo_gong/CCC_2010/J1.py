@@ -28,4 +28,4 @@ Output for Sample Input
 
 def partitions():
     integer = int(input("Give a integer"))
-    return (integer // 2) + 1
+    return (integer // 2) + (1 if integer < 6 else 0)

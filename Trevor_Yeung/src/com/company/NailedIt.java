@@ -49,29 +49,52 @@ pieces of wood to nail together. Specifically, he may have a fence of height 11,
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
 import java.util.Scanner;
-import java.util.ArrayList;
 
 public class NailedIt {
 
-    public static void main(String[] args) throws FileNotFoundException{
-        var sc = new Scanner(new File("NailedIt"));
-        var wood = new int[2001];
-        var planks = new int[4001];
+    int[] wood;
+    int[] boards;
+
+    public NailedIt() throws FileNotFoundException {
+        wood = new int[2001];
+        boards = new int[4001];
+        Scanner sc = new Scanner(new File("NailedIt"));
         int woodCount = sc.nextInt();
         for (int i = 0; i < woodCount; i++) {
-            int v = sc.nextInt();
-            wood[v] += 1;
+            wood[sc.nextInt()] += 1;
         }
+    }
 
-        for (int i = 2; i < 4001; i++) {
-            for (int j = 1; j <= i/2; j++) {
-
+    public int[] makeBoards() {
+        for (int i = 1; i < 2001; i++) {
+            for (int j = i; j < 2001; j++) {
+                boards[i+j] += i == j? wood[i]/2 : Math.min(wood[i], wood[j]);
             }
         }
-        System.out.println(Arrays.toString(wood));
+        int max = 0;
+        int instancesOfMax = 0;
+        int val;
+        for (int i = 2; i < 4001; i++) {
+            val = boards[i];
+            if (val > max) {
+                max = val;
+                instancesOfMax = 1;
+            } else if (val == max) {
+                instancesOfMax++;
+            }
+        }
+        var output = new int[2];
+        output[0] = max;
+        output[1] = instancesOfMax;
+        return output;
+    }
 
+    public static void main(String[] args) throws FileNotFoundException {
+        var n = new NailedIt();
+        var boards = n.makeBoards();
+        System.out.println(boards[0]);
+        System.out.println(boards[1]);
     }
 
 }

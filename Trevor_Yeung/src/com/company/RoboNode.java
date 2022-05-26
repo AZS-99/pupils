@@ -18,7 +18,7 @@ public class RoboNode {
     }
 
     public String toString() {
-        return val.toString();
+        return val < Double.POSITIVE_INFINITY? val.toString() : "X";
     }
 
 }

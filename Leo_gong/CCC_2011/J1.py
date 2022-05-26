@@ -18,7 +18,8 @@ Output Specification
 The output will be the list of aliens who match the possible description given by the witness. If no aliens match the
 description, there is no output.
 
-Sample Session 1 (with output shown in text, user input in italics) How many antennas?
+Sample Session 1 (with output shown in text, user input in italics)
+How many antennas?
 4
 How many eyes?
 5
