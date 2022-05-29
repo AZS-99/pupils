@@ -1,4 +1,4 @@
-from loops import print_loops
+from CCC_2018.J1 import telemarketers
 
 if __name__ == '__main__':
-   (print_loops())
+ (telemarketers())

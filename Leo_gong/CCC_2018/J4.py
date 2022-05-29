@@ -55,22 +55,28 @@ The original data was rotated 90 degrees to the left/counter-clockwise.
 """
 def checking(lst):
     num_line = len(lst)
+    for sublist in lst:
+        for i in range(len(sublist) - 1):
+            if sublist[i] > sublist[i + 1]:
+                return False
     for i in range(num_line):
-        if not lst[i][0] < lst[i][1] < lst[i][2]:
-            return False
-
-    for i in range(num_line):
-        if not lst[0][i] < lst[1][i] < lst[2][i]:
-            return False
+        for j in range(num_line):
+            if lst[j][i] > lst[j][i]:
+                return False
     return True
 
 def rotate(lst):
     length = len(lst)
+    lst1 = []
+    for i in range(length):
+        lst_new = []
+        for j in range(length):
+            lst_new.append(0)
+        lst1.append(lst_new)
     for r in range(length):
         for c in range(length):
-            lst[r][c], lst[c][length - 1 - r] = lst[c][length - 1 - r], lst[r][c]
-
-    return lst
+            lst1[r][c] = lst[length - 1 - c][r]
+    return lst1
 
 
 
@@ -83,10 +89,8 @@ def sunflower():
         lst_of_lsts.append(line)
 
     for i in range(3):
-        if checking(lst_of_lsts) == False:
+        if not checking(lst_of_lsts) :
             lst_of_lsts = rotate(lst_of_lsts)
-        else:
-            print(lst_of_lsts)
 
-    print(lst_of_lsts)
-
+    for sublist in lst_of_lsts:
+        print(sublist)

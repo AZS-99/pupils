@@ -33,3 +33,22 @@ whereas Byron has moved 5 − 3 + 4 steps, for a total of 6 steps from the start
 """
 def steps():
     file = open("CCC_2010/J2", "r")
+    step1 = int(file.readline())
+    step2 = int(file.readline())
+    step3 = int(file.readline())
+    step4 = int(file.readline())
+    distmoved1 = step1 - step2
+    distmoved2 = step3 - step4
+    maxsteps = int(file.readline())
+    totalsteps1 = step1 + step2
+    totalsteps2 = step3 + step4
+    Nikky = (maxsteps // totalsteps1) * distmoved1 + maxsteps % totalsteps1
+    Bryon = (maxsteps // totalsteps2) * distmoved2 + maxsteps % totalsteps2
+    if Nikky > Bryon:
+        print(("Nikky"))
+    elif Bryon > Nikky:
+        print("Bryon")
+    else:
+        print("Tie")
+
+
