@@ -40,8 +40,8 @@ Explanation for Output for Sample Input 3
 Fiona leaves at 11:20pm, and with non-rush-hour traffic, it takes two hours to travel, so she arrives at 1:20am the next
 day.
 """
-def check(hours):
-    if 7 <= hours <= 10 or 15 <= hours <= 19:
+def check(time):
+    if 7 * 60 <= time < 10 * 60 or 15 * 60 <= time < 19 * 60:
         return True
     return False
 
@@ -49,3 +49,14 @@ def travel():
     file = open("CCC_2016/J4", "r")
     hrs, mins = [int(x) for x in file.readline().split(":")]
 
+    time = hrs * 60 + mins
+    counter = 240
+    while counter > 0:
+        if check(time):
+            counter -= 1
+        else:
+            counter -= 2
+        time += 1
+    hrs = (time // 60) % 24
+    mins = time % 60
+    print(hrs, mins)

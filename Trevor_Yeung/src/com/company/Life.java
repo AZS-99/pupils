@@ -105,27 +105,50 @@ Sample run
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Collections;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-
 public class Life {
 
-    ArrayList<ArrayList<LifeNode>> graph;
+    LifeNode[][] graph;
 
     public Life() throws FileNotFoundException {
-        graph = new ArrayList<>();
-
-        ArrayList<LifeNode> row;
-        for (int i = 0; i < 11; i++) {
-            row = new ArrayList<>(Collections.nCopies(11, new LifeNode(false)));
-            graph.add(row);
-        }
-
+        graph = new LifeNode[11][11];
         var sc = new Scanner(new File("Life"));
+        sc.useDelimiter("");
+        String ch;
+        for (int i = 0; i < 11; i++) {
+            for (int j = 0; j < 11; j++) {
+                graph[i][j] = new LifeNode();
+                if (i > 2 && i < 8 && j > 2 && j < 8){
+                    ch = sc.next();
+                    if (ch.equals("0")) graph[i][j].isAlive = true;
+                }
+            }
+            if (i < 7 && i > 2) sc.next();
+        }
+        link();
+    }
 
-
+    public void link() {
+        LifeNode node;
+        for (int i = 0; i < 11; i++) {
+            for (int j = 0; j < 11; j++) {
+                node = graph[i][j];
+                if (i > 0) {
+                    node.neighbours.add(graph[i-1][j]);
+                    if (j > 0) node.neighbours.add(graph[i-1][j-1]);
+                    if (j < 10) node.neighbours.add(graph[i-1][j+1]);
+                }
+                if (i < 10) {
+                    node.neighbours.add(graph[i+1][j]);
+                    if (j > 0) node.neighbours.add(graph[i+1][j-1]);
+                    if (j < 10) node.neighbours.add(graph[i+1][j+1]);
+                }
+                if (j > 0) node.neighbours.add(graph[i][j-1]);
+                if (j < 10) node.neighbours.add(graph[i][j+1]);
+            }
+        }
     }
 
     public String toString() {
@@ -139,9 +162,54 @@ public class Life {
         return output.toString();
     }
 
+    public void nextGeneration() {
+        var change = new ArrayList<LifeNode>();
+        int aliveNeighbours;
+        for (var row : graph) {
+            for (var node : row) {
+                aliveNeighbours = 0;
+                for (var neighbour : node.neighbours) {
+                    if (neighbour.isAlive) aliveNeighbours++;
+                }
+                if (node.isAlive && !(aliveNeighbours == 2 || aliveNeighbours == 3)) change.add(node);
+                else if (!node.isAlive && aliveNeighbours == 3) change.add(node);
+            }
+        }
+        for (var node : change) node.isAlive = !node.isAlive;
+    }
+
+    public Life copy() throws FileNotFoundException {
+        var copy = new Life();
+        for (int i = 0; i < 11; i++) {
+            for (int j = 0; j < 11; j++) {
+                copy.graph[i][j] = graph[i][j].copy();
+            }
+        }
+        link();
+        copy.link();
+        return copy;
+    }
+
+    public void run() throws FileNotFoundException {
+        var original = copy();
+        var runCopy = copy();
+        var sc = new Scanner(System.in);
+        int val;
+        while (true) {
+            String cmd = sc.nextLine();
+            if (cmd.equals("-1")) return;
+            val = Integer.parseInt(cmd.substring(1));
+            if (cmd.charAt(0) == '#') runCopy = original.copy();
+            for (int i = 0; i < val; i++) {
+                runCopy.nextGeneration();
+            }
+            System.out.println(runCopy);
+        }
+    }
+
     public static void main(String[] args) throws FileNotFoundException {
         var life = new Life();
-        System.out.println(life);
+        life.run();
     }
 
 }

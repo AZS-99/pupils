@@ -25,10 +25,10 @@ def cubes(value):
 
 
 """
-Write a function that displays all the leap years since 1900 till this year 2022
+Write a function that displays all the leap years since 1901 till this year 2022
 """
 def leap_year():
-    for year in range(1900, 2023):
+    for year in range(1901, 2023):
         if year % 4 == 0:
             print(year)
 
