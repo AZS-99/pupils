@@ -21,6 +21,16 @@ Output for Sample Input
 """
 def sumac_sequence():
     file = open("CCC_2011/J3", 'r')
-    t_one = int(file.readline())
-    t_two = int(file.readline())
+    t1 = int(file.readline())
+    t2 = int(file.readline())
+    count = 2
+    while t1 - t2 < t2:
+        count += 1
+        t3 = t1 - t2
+        t1, t2 = t2, t3
+    count += 1
+    return count
+
+
+
 

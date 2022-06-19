@@ -37,35 +37,20 @@ Number of ways to catch fish: 3
 """
 def old_fishin_hole():
     file = open("CCC_2009/J2", "r")
-    brown_trout, northern_pike, yellow_pickerel, total_points = int(file.readline()), int(file.readline()), \
-                                                                int(file.readline()), int(file.readline())
-    num_bt = total_points // brown_trout
-    num_np = total_points // northern_pike
-    num_yp = total_points // yellow_pickerel
-    num_bt_np = total_points // (brown_trout + northern_pike)
-    num_bt_yp = total_points // (brown_trout + yellow_pickerel)
-    num_np_yp = total_points // (northern_pike + yellow_pickerel)
-    num_three = total_points // (brown_trout + northern_pike + yellow_pickerel)
+    bt = int(file.readline())
+    np = int(file.readline())
+    yp = int(file.readline())
+    point_limit = int(file.readline())
+    max_b = point_limit // bt
+    max_n = point_limit // np
+    max_y = point_limit // yp
 
-    for i in range(num_bt):
-        print(i + 1, "Brown Trout, 0 Northern Pike, 0 Yellow Pickerel")
+    ways = 0
 
-    for i in range(num_np):
-        print("0 Brown Trout,", i + 1, "Northern Pike, 0 Yellow Pickerel")
-
-    for i in range(num_yp):
-        print("1 Brown Trout, 0 Northern Pike,", i + 1, "Yellow Pickerel")
-
-    for i in range(num_bt_np):
-        print(i, "Brown Trout,", i + 1, "Northern Pike, 0 Yellow Pickerel")
-
-    for i in range(num_bt_yp):
-        print(i, "Brown Trout, 0 Northern Pike,", i + 1, "Yellow Pickerel")
-
-    for i in range(num_np_yp):
-        print("0 Brown Trout,", i + 1, "Northern Pike,", i + 1, "Yellow Pickerel")
-
-    for i in range(num_three):
-        print(i, "Brown Trout,", i + 1, "Northern Pike,", i + 1, "Yellow Pickerel")
-
-    print("Number of ways to catch fish:", num_bt + num_np + num_yp + num_bt_np + num_bt_yp + num_np_yp + num_three)
+    for b in range(max_b + 1):
+        for n in range(max_n + 1):
+            for y in range(max_y + 1):
+                if 0 < b * bt + n * np + y * yp <= point_limit:
+                    print(b, "Brown Trout,", n, "Northern Pike,", y, "Yellow Pickerel")
+                    ways += 1
+    print("Number of ways to catch fish:", ways)

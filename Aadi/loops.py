@@ -89,7 +89,7 @@ def get_units_digit(n):
 
 
 """
-Write a function that takes an integer n as an argument, and returns the number of digits of that number
+Write a function that takes an integer n as an argument, and returns the number of digits in that number
 """
 def count_digits(n):
     total = 0

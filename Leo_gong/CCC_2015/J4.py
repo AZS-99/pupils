@@ -77,18 +77,34 @@ def message():
     num_lines = int(file.readline())
     dic = {}
     time = -1
+    last_is_w = False
+    order_lst = []
     for i in range(num_lines):
         state, num_friend = file.readline().split(" ")
         num_friend = int(num_friend)
         if state == 'W':
             time += num_friend
+            last_is_w = True
         else:
-            time += 1
+            if not last_is_w:
+                time += 1
 
-        if num_friend not in dic:
-            dic[num_friend] = [state, time]
+            if num_friend in dic:
+                dic[num_friend].append(time)
+            else:
+                dic[num_friend] = [time]
+            last_is_w = False
+
+    for friend in dic:
+        difference = 0
+        if len(dic[friend]) % 2 == 1:
+            order_lst.append(str(friend) + " " + "-1")
         else:
-            old_values = dic[num_friend]
-            old_time = old_values[1]
-            new_time = time - old_time
-            dic[num_friend] = [state, new_time]
+            lst = dic[friend]
+            for i in range(0, len(dic[friend]), 2):
+                difference += lst[i + 1] - lst[i]
+            order_lst.append(str(friend) + " " + str(difference))
+
+    order_lst.sort()
+    for line in order_lst:
+        print(line)

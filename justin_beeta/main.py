@@ -1,11 +1,10 @@
 
 
 
-from CCC_2012.J3 import scale_it_up
+from CCC_2009.J3 import time_in_different_areas
 
 if __name__ == '__main__':
-       scale_it_up()
-
+      time_in_different_areas()
 
 
 

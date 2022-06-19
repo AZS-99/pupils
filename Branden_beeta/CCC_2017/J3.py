@@ -50,7 +50,15 @@ It is also possible to travel using 5 units of electricity from (10, 2) to (11, 
 sequence:
 It is not possible to move via any path of length 5 from (10, 2) to (10, 4), however.
 """
-def road_cal()
+def road_cal():
     file = open("CCC_2017/J3", "r")
     start_x, start_y = [int(x) for x in file.readline().split(" ")]
     dest_x, dest_y = [int(y) for y in file.readline().split(" ")]
+    battery = int(file.readline())
+    x_dist = abs(start_x - dest_x)
+    y_dist = abs(start_y - dest_y)
+    leftover_battery = battery - x_dist - y_dist
+    if leftover_battery == abs(leftover_battery) and leftover_battery % 2 == 0:
+        print("Y")
+    else:
+        print("N")
